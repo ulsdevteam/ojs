@@ -31,7 +31,7 @@
 	<message key="plugins.generic.plumAnalytics.manager.settings.widthInvalid">The Width is invalid.</message>
 	<message key="plugins.generic.plumAnalytics.manager.settings.version">Version</message>
 	<message key="plugins.generic.plumAnalytics.manager.settings.versionRequired">The version is required.</message>
-       	<message key="plugins.generic.plumAnalytics.manager.settings.versionInstructions"><![CDATA[The version is found in the javascript snippet, just before "widgets.js": <em>...js/</em><strong>0.1.19</strong><em>/widgets.js</em>.]]></message>
+	<message key="plugins.generic.plumAnalytics.manager.settings.versionInstructions"><![CDATA[The version is found in the javascript snippet, just before "widgets.js": <em>...js/</em><strong>0.1.19</strong><em>/widgets.js</em>.]]></message>
 	<message key="plugins.generic.plumAnalytics.manager.settings.showTitle">Show Title</message>
 	<message key="plugins.generic.plumAnalytics.manager.settings.showAuthor">Show Author</message>
 	<message key="plugins.generic.plumAnalytics.manager.settings.alignment">Alignment</message>
