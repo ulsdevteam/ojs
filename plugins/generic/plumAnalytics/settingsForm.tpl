@@ -25,10 +25,10 @@
 	<tr valign="top">
 		<td width="20%" class="label">{fieldLabel name="plumAnalyticsVersion" required="true" key="plugins.generic.plumAnalytics.manager.settings.version"}</td>
 		<td width="80%" class="value">
-                    <input type="text" name="version" id="plumAnalyticsVersion" value="{$version|escape}" size="5" maxlength="10" class="textField" />
-                    <br />
-                    <span class="instruct">{translate key="plugins.generic.plumAnalytics.manager.settings.versionInstructions"}</span>
-                </td>
+			<input type="text" name="version" id="plumAnalyticsVersion" value="{$version|escape}" size="5" maxlength="10" class="textField" />
+			<br />
+			<span class="instruct">{translate key="plugins.generic.plumAnalytics.manager.settings.versionInstructions"}</span>
+		</td>
 	</tr>
 	<tr valign="top">
 		<td width="20%" class="label">{fieldLabel name="plumAnalyticsWidgetType" required="true" key="plugins.generic.plumAnalytics.manager.settings.widgetType"}</td>

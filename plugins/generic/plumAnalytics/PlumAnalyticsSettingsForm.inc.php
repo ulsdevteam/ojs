@@ -23,15 +23,15 @@ class PlumAnalyticsSettingsForm extends Form {
 	/** @var $plugin object */
 	var $plugin;
 
-        /** @var $widgetTypes array() has of valid widget type options */
-        var $widgetTypes;
-        
-        /** @var $alignments array() hash of valid widget alignment options */
-        var $alignments;
-        
-        // convenience variable for each keyname for settings
-        private $settingsKeys;
-        
+	/** @var $widgetTypes array() has of valid widget type options */
+	var $widgetTypes;
+		
+	/** @var $alignments array() hash of valid widget alignment options */
+	var $alignments;
+		
+	// convenience variable for each keyname for settings
+	private $settingsKeys;
+		
 	/**
 	 * Constructor
 	 * @param $plugin object
@@ -40,22 +40,22 @@ class PlumAnalyticsSettingsForm extends Form {
 	function PlumAnalyticsSettingsForm(&$plugin, $journalId) {
 		$this->journalId = $journalId;
 		$this->plugin =& $plugin;
-               
-                // Set options for widgetTypes, and setup convenience variable for settings iterators
-                $this->widgetTypes = array();
-                $this->settingsKeys = array();
-                foreach ($plugin->settingsByWidgetType as $k => $v) {
-                    $this->widgetTypes[$k] = __('plugins.generic.plumAnalytics.manager.settings.widgetType.'.$k);
-                    $this->settingsKeys = array_merge($this->settingsKeys, $v);
-                }
-                unset($this->widgetTypes['_all']);
-                $this->settingsKeys = array_unique($this->settingsKeys);
-                // Set options for alignments
-                $this->alignments = array();
-                foreach (array('left', 'right', 'top', 'bottom') as $k) {
-                    $this->alignments[$k] = __('plugins.generic.plumAnalytics.manager.settings.alignment.'.$k);
-                }
-                
+			   
+		// Set options for widgetTypes, and setup convenience variable for settings iterators
+		$this->widgetTypes = array();
+		$this->settingsKeys = array();
+		foreach ($plugin->settingsByWidgetType as $k => $v) {
+			$this->widgetTypes[$k] = __('plugins.generic.plumAnalytics.manager.settings.widgetType.'.$k);
+			$this->settingsKeys = array_merge($this->settingsKeys, $v);
+		}
+		unset($this->widgetTypes['_all']);
+		$this->settingsKeys = array_unique($this->settingsKeys);
+		// Set options for alignments
+		$this->alignments = array();
+		foreach (array('left', 'right', 'top', 'bottom') as $k) {
+			$this->alignments[$k] = __('plugins.generic.plumAnalytics.manager.settings.alignment.'.$k);
+		}
+				
 		parent::Form($plugin->getTemplatePath() . 'settingsForm.tpl');
 
 		$this->addCheck(new FormValidator($this, 'version', 'required', 'plugins.generic.plumAnalytics.manager.settings.versionRequired'));
