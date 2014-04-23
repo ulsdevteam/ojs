@@ -43,19 +43,19 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td width="20%" class="label">{fieldLabel name="plumAnalyticsWidth" required="true" key="plugins.generic.plumAnalytics.manager.settings.width"}</td>
+		<td width="20%" class="label">{fieldLabel name="plumAnalyticsWidth" key="plugins.generic.plumAnalytics.manager.settings.width"}</td>
 		<td width="80%" class="value"><input type="text" name="width" id="plumAnalyticsWidth" value="{$width|escape}" size="5" maxlength="10" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td width="20%" class="label">{fieldLabel name="plumAnalyticsShowTitle" required="true" key="plugins.generic.plumAnalytics.manager.settings.showTitle"}</td>
-		<td width="80%" class="value"><input type="checkbox" name="showTitle" id="plumAnalyticsShowTitle" {if $showTitle }checked="checked" {/if}/> </td>
+		<td width="20%" class="label">{fieldLabel name="plumAnalyticsShowTitle" key="plugins.generic.plumAnalytics.manager.settings.showTitle"}</td>
+		<td width="80%" class="value"><input type="checkbox" name="showTitle" id="plumAnalyticsShowTitle" {if $showTitle eq 'true' }checked="checked" {/if}/> </td>
 	</tr>
 	<tr valign="top">
-		<td width="20%" class="label">{fieldLabel name="plumAnalyticsShowAuthor" required="true" key="plugins.generic.plumAnalytics.manager.settings.showAuthor"}</td>
-		<td width="80%" class="value"><input type="checkbox" name="showAuthor" id="plumAnalyticsShowAuthor" {if $showAuthor }checked="checked" {/if}/> </td>
+		<td width="20%" class="label">{fieldLabel name="plumAnalyticsShowAuthor" key="plugins.generic.plumAnalytics.manager.settings.showAuthor"}</td>
+		<td width="80%" class="value"><input type="checkbox" name="showAuthor" id="plumAnalyticsShowAuthor" {if $showAuthor eq 'true' }checked="checked" {/if}/> </td>
 	</tr>
 	<tr valign="top">
-		<td width="20%" class="label">{fieldLabel name="plumAnalyticsAlignment" required="true" key="plugins.generic.plumAnalytics.manager.settings.alignment"}</td>
+		<td width="20%" class="label">{fieldLabel name="plumAnalyticsAlignment" key="plugins.generic.plumAnalytics.manager.settings.alignment"}</td>
 		<td width="80%" class="value">
 			<select class="selectMenu" name="alignment" id="plumAnalyticsAlignment">
 				{foreach from=$alignments key=key item=value}
@@ -65,8 +65,8 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td width="20%" class="label">{fieldLabel name="plumAnalyticsHideWhenEmpty" required="true" key="plugins.generic.plumAnalytics.manager.settings.hideWhenEmpty"}</td>
-		<td width="80%" class="value"><input type="checkbox" name="hideWhenEmpty" id="plumAnalyticsHideWhenEmpty" {if $hideWhenEmpty }checked="checked" {/if}/> </td>
+		<td width="20%" class="label">{fieldLabel name="plumAnalyticsHideWhenEmpty" key="plugins.generic.plumAnalytics.manager.settings.hideWhenEmpty"}</td>
+		<td width="80%" class="value"><input type="checkbox" name="hideWhenEmpty" id="plumAnalyticsHideWhenEmpty" {if $hideWhenEmpty eq 'true' }checked="checked" {/if}/> </td>
 	</tr>
 </table>
 

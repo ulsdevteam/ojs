@@ -61,6 +61,8 @@ class PlumAnalyticsSettingsForm extends Form {
 		$this->addCheck(new FormValidator($this, 'version', 'required', 'plugins.generic.plumAnalytics.manager.settings.versionRequired'));
 
 		$this->addCheck(new FormValidator($this, 'widgetType', 'required', 'plugins.generic.plumAnalytics.manager.settings.widgetTypeRequired'));
+		
+		$this->addCheck(new FormValidatorPost($this));
 	}
 
 	/**
