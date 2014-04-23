@@ -91,7 +91,12 @@ class PlumAnalyticsSettingsForm extends Form {
 		$journalId = $this->journalId;
 
 		foreach ($this->settingsKeys as $k) {
-			$plugin->updateSetting($journalId, $k, $this->getData($k), 'string');
+			$saveData = $this->getData($k);
+			// special handling of checkboxes
+			if (in_array($k, array('showTitle', 'showAuthor', 'hideWhenEmpty'))) {
+				$saveData = $saveData ? 'true' : 'false';
+			}
+			$plugin->updateSetting($journalId, $k, $saveData, 'string');
 		}
 	}
 }
