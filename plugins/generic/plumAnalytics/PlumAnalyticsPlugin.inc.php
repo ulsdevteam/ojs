@@ -16,15 +16,20 @@ import('lib.pkp.classes.plugins.GenericPlugin');
 
 class PlumAnalyticsPlugin extends GenericPlugin {
 
-	// This array associates widget types with the possible widget settings options
-	// _all is applied to each widget types; other array keys define widget types
+	/**
+	 * @var $settingsByWidgetType array()
+	 *  This array associates widget types with the possible widget settings options
+	 * _all is applied to each widget types; other array keys define widget types.
+	 */
 	public $settingsByWidgetType = array(
 		'_all' => array('widgetType', 'version'),
 		'plumx-artifact' => array(),
 		'plumx-artifact-metrics' => array('width', 'showTitle', 'showAuthor', 'hideWhenEmpty'),
 		'plumx-artifact-metrics-popup' => array('width', 'showTitle', 'showAuthor', 'alignment'),
-		'plumx-artifact-categories' => array('width', 'showTitle', 'showAuthor')
+		'plumx-artifact-categories' => array('width', 'showTitle', 'showAuthor'),
 	);
+
+
 	/**
 	 * Called as a plugin is registered to the registry
 	 * @param $category String Name of category plugin was registered to
@@ -91,10 +96,10 @@ class PlumAnalyticsPlugin extends GenericPlugin {
 		);
 		if ($isSubclass) {
 			$pageCrumbs[] = array(
-			Request::url(null, 'manager', 'plugins'),
-			'manager.plugins'
+				Request::url(null, 'manager', 'plugins'),
+				'manager.plugins'
 			);
-                }
+		}
 
 		$templateMgr->assign('pageHierarchy', $pageCrumbs);
 	}
@@ -117,40 +122,51 @@ class PlumAnalyticsPlugin extends GenericPlugin {
 		$smarty =& $params[1];
 		$output =& $params[2];
 		$templateMgr =& TemplateManager::getManager();
-
+				
 		// journal is required to retreive settings
 		$currentJournal = $templateMgr->get_template_vars('currentJournal');
 		if (!empty($currentJournal)) {
 			$journal =& Request::getJournal();
 			$journalId = $journal->getId();
+			// Shortcut this function if we are not in an article, or not in the selected hook, or not in the PageFooter
+			if (Request::getRequestedPage() != 'article' && $hookName != $this->availableHooks[$this->getSetting($journalId, 'hook')] && $hookName != 'Templates::Article::Footer::PageFooter') {
+				return false;
+			}
 
 			// article is required to retreive DOI
 			$article = $templateMgr->get_template_vars('article');
-			$articleDOI = $article->getPubId('doi');
+			if (!$article) {
+				return false;
+			}
+			
 			// requested page must be an article with a DOI for widget display
-			if (Request::getRequestedPage() == 'article' && $articleDOI) {
-				// sanity check to ensure values required by _all widgets are included
-				$requiredValues = true;
-				foreach ($this->settingsByWidgetType['_all'] as $k) {
-					$v = $this->getSetting($journalId, $k);
-					$templateMgr->assign($k, $v);
-					if (!$v) {
-						$requiredValues = false;
-					}
-				}
-				if ($requiredValues) {
-					if ($hookName == 'Templates::Article::Footer::PageFooter') {
-						$output .= $templateMgr->fetch($this->getTemplatePath() . 'pageTagPlumScript.tpl');
-					} elseif ($hookName == 'Templates::Article::MoreInfo') {
-						$templateMgr->assign('articleDOI', $articleDOI);
-						// Assign variables as dictated by the settingsByWidgetType association
-						foreach ($this->settingsByWidgetType[$this->getSetting($journalId, 'widgetType')] as $k) {
-							$templateMgr->assign($k, $this->getSetting($journalId, $k));
-						}
-						$output .= $templateMgr->fetch($this->getTemplatePath() . 'pageTagPlumWidget.tpl');
-					}
+			$articleDOI = $article->getPubId('doi');
+			if (!$articleDOI) {
+				return false;
+			}
+
+			// sanity check to ensure values required by _all widgets are included
+			$requiredValues = true;
+			foreach ($this->settingsByWidgetType['_all'] as $k) {
+				$v = $this->getSetting($journalId, $k);
+				$templateMgr->assign($k, $v);
+				if (!$v) {
+					$requiredValues = false;
 				}
 			}
+			if ($requiredValues) {
+				if ($hookName == 'Templates::Article::Footer::PageFooter') {
+					$output .= $templateMgr->fetch($this->getTemplatePath() . 'pageTagPlumScript.tpl');
+				} elseif ($hookName == 'Templates::Article::MoreInfo') {
+					$templateMgr->assign('articleDOI', $articleDOI);
+					// Assign variables as dictated by the settingsByWidgetType association
+					foreach ($this->settingsByWidgetType[$this->getSetting($journalId, 'widgetType')] as $k) {
+						$templateMgr->assign($k, $this->getSetting($journalId, $k));
+					}
+					$output .= $templateMgr->fetch($this->getTemplatePath() . 'pageTagPlumWidget.tpl');							   
+				}
+			}  
+
 		}
 		return false;
 	}
@@ -174,8 +190,8 @@ class PlumAnalyticsPlugin extends GenericPlugin {
 
 				$this->import('PlumAnalyticsSettingsForm');
 				$form = new PlumAnalyticsSettingsForm($this, $journal->getId());
-					$templateMgr->assign('alignments', $form->alignments);
-					$templateMgr->assign('widgetTypes', $form->widgetTypes);
+				$templateMgr->assign('alignments', $form->alignments);
+				$templateMgr->assign('widgetTypes', $form->widgetTypes);
 				if (Request::getUserVar('save')) {
 					$form->readInputData();
 					if ($form->validate()) {

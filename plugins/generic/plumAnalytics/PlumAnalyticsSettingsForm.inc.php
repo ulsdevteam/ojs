@@ -23,15 +23,15 @@ class PlumAnalyticsSettingsForm extends Form {
 	/** @var $plugin object */
 	var $plugin;
 
-	/** @var $widgetTypes array() has of valid widget type options */
+	/** @var $widgetTypes array() hash of valid widget type options */
 	var $widgetTypes;
-		
+	
 	/** @var $alignments array() hash of valid widget alignment options */
 	var $alignments;
-		
+	
 	// convenience variable for each keyname for settings
 	private $settingsKeys;
-		
+	
 	/**
 	 * Constructor
 	 * @param $plugin object
@@ -61,7 +61,7 @@ class PlumAnalyticsSettingsForm extends Form {
 		$this->addCheck(new FormValidator($this, 'version', 'required', 'plugins.generic.plumAnalytics.manager.settings.versionRequired'));
 
 		$this->addCheck(new FormValidator($this, 'widgetType', 'required', 'plugins.generic.plumAnalytics.manager.settings.widgetTypeRequired'));
- 	}
+	}
 
 	/**
 	 * Initialize form data.
