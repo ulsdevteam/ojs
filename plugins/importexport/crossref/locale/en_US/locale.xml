@@ -12,11 +12,10 @@
   -->
 
 <locale name="en_US" full_name="U.S. English">
-	<message key="plugins.importexport.crossref.description">Export or register article metadata in CrossRef format.</message>
 	<message key="plugins.importexport.crossref.displayName">CrossRef Export/Registration Plugin</message>
 	<message key="plugins.importexport.crossref.description">Export or register article metadata in CrossRef format.</message>
 
-	<message key="plugins.importexport.crossref.settings.depositorIntro">Please enter the name and the email of the person responsible fot the CrossRef DOI deposit.</message>
+	<message key="plugins.importexport.crossref.settings.depositorIntro">Please enter the name and the email of the person responsible for the CrossRef DOI deposit.</message>
 	<message key="plugins.importexport.crossref.settings.form.depositorName">Depositor name</message>
 	<message key="plugins.importexport.crossref.settings.form.depositorEmail">Depositor email</message>
 	<message key="plugins.importexport.crossref.settings.form.depositorNameRequired">Please enter the depositor name.</message>
@@ -40,7 +39,7 @@
 	<message key="plugins.importexport.crossref.settings.form.usernameRequired">Please enter the username you got from CrossRef.</message>
 
 	<message key="plugins.importexport.crossref.export.unregistered">Export all unregistered articles</message>
-	<message key="plugins.importexport.crossref.export.selectUnregistered">Select unregistered Articles</message>
+	<message key="plugins.importexport.crossref.export.selectUnregistered">Select unregistered articles</message>
 	<message key="plugins.importexport.crossref.export.noUnregistered">All published articles with DOIs have already been registered.</message>
 
 	<message key="plugins.importexport.crossref.cliUsage"><![CDATA[Usage:
