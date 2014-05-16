@@ -5,7 +5,7 @@
   * plugins/generic/plumAnalytics/locale/en_US/locale.xml
   *
   * Copyright (c) 2014 University of Pittsburgh
-  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  * Distributed under the GNU GPL v2 or later. For full terms see the file docs/COPYING.
   *
   * Plum Analytics plugin localization strings
   -->
@@ -14,7 +14,7 @@
 
 	<!-- Plum Analytics -->
 	<message key="plugins.generic.plumAnalytics.displayName">Plum Analytics Artifact Widget</message>
-	<message key="plugins.generic.plumAnalytics.description"><![CDATA[Integrate OJS with PlumX, a subscription-based platform for tracking research impact.  Through this plugin, PlumX customers can embed the PlumX Artifact widget on the article abstract view in OJS to demonstrate how each article is utilized, interacted with and talked about around the world through dozens of metrics mined from the open Web.  The article requires a DOI for the widget to apprear.]]></message>
+	<message key="plugins.generic.plumAnalytics.description"><![CDATA[Integrate OJS with PlumX, a subscription-based platform for tracking research impact.  Through this plugin, PlumX customers can embed the PlumX Artifact widget on the article abstract view in OJS to demonstrate how each article is utilized, interacted with and talked about around the world through dozens of metrics mined from the open Web.  The article requires a DOI for the widget to appear.]]></message>
 
 	<!-- Plum Analytics Settings Management -->
 	<message key="plugins.generic.plumAnalytics.manager.settings">Settings</message>

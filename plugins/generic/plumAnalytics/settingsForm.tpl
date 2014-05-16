@@ -2,7 +2,7 @@
  * plugins/generic/plumAnalytics/settingsForm.tpl
  *
  * Copyright (c) 2014 University of Pittsburgh
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Distributed under the GNU GPL v2 or later. For full terms see the file docs/COPYING.
  *
  * Plum Analytics plugin settings
  *

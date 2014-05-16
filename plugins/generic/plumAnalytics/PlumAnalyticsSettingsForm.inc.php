@@ -4,7 +4,7 @@
  * @file plugins/generic/plumAnalytics/PlumAnalyticsSettingsForm.inc.php
  *
  * Copyright (c) 2014 University of Pittsburgh
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Distributed under the GNU GPL v2 or later. For full terms see the file docs/COPYING.
  *
  * @class PlumAnalyticsSettingsForm
  * @ingroup plugins_generic_plumAnalytics
