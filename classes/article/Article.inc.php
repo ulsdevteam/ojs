@@ -135,7 +135,7 @@ class Article extends Submission {
 	 * from journal settings as necessary.
 	 * @param $preview boolean If true, preview the license; do not attach
 	 */
-	function getLocalizedCopyrightHolder($preview = false) {
+	function getLocalizedCopyrightHolder($preview = true) {
 		$copyrightHolders = $this->getCopyrightHolder(null, $preview);
 		foreach (AppLocale::getLocalePrecedence() as $locale) {
 			if (isset($copyrightHolders[$locale])) return $copyrightHolders[$locale];
@@ -149,7 +149,7 @@ class Article extends Submission {
 	 * settings as necessary.
 	 * @param $preview boolean If true, preview the license; do not attach
 	 */
-	function getLicenseUrl($preview = false) {
+	function getLicenseUrl($preview = true) {
 		return $this->_getLicenseFieldValue(null, PERMISSIONS_FIELD_LICENSE_URL, $preview);
 	}
 
@@ -159,7 +159,7 @@ class Article extends Submission {
 	 * @param $locale string Locale
 	 * @param $preview boolean If true, preview the license; do not attach
 	 */
-	function getCopyrightHolder($locale, $preview = false) {
+	function getCopyrightHolder($locale, $preview = true) {
 		return $this->_getLicenseFieldValue($locale, PERMISSIONS_FIELD_COPYRIGHT_HOLDER, $preview);
 	}
 
@@ -167,7 +167,7 @@ class Article extends Submission {
 	 * Get the copyright year for this article, attaching it as necessary
 	 * @param $preview boolean If true, preview the license; do not attach
 	 */
-	function getCopyrightYear($preview = false) {
+	function getCopyrightYear($preview = true) {
 		return $this->_getLicenseFieldValue(null, PERMISSIONS_FIELD_COPYRIGHT_YEAR, $preview);
 	}
 
@@ -178,7 +178,7 @@ class Article extends Submission {
 	 * @param $field int PERMISSIONS_FIELD_... Which to return
 	 * @param $preview boolean If true, preview the license; do not attach
 	 */
-	function _getLicenseFieldValue($locale, $field, $preview = false) {
+	function _getLicenseFieldValue($locale, $field, $preview = true) {
 		// If possible, use the stored permissions info
 		switch ($field) {
 			case PERMISSIONS_FIELD_LICENSE_URL:
@@ -215,6 +215,18 @@ class Article extends Submission {
 				break;
 		}
 		$copyrightYear = date('Y');
+		// infer the copyright date from the publication date, if this article has already been published
+		if ($this->getArticleId()) {
+			$publishedArticleDao =& DAORegistry::getDAO('PublishedArticleDAO');
+			$publishedArticle =& $publishedArticleDao->getPublishedArticleByArticleId($this->getId());
+			if ($publishedArticle && ($datePublished = $publishedArticle->getDatePublished())) {
+				// assume copyright date is publication date
+				$copyrightYear = substr($datePublished, 0, 4);
+			} else {
+				// don't populate current year into copyright if already published, but no date could be inferred
+				$copyrightYear = '';
+			}
+		}
 
 		if (!$preview) {
 			// If not previewing the license, attach to the article
