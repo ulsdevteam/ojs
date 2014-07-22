@@ -5,3 +5,6 @@
 [submodule "plugins/importexport/duracloud/lib/DuraCloud-PHP"]
 	path = plugins/importexport/duracloud/lib/DuraCloud-PHP
 	url = git://github.com/asmecher/DuraCloud-PHP
+[submodule "plugins/generic/plumAnalytics"]
+	path = plugins/generic/plumAnalytics
+	url = git://github.com/ulsdevteam/ojs-plum-plugin
