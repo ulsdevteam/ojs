@@ -65,7 +65,7 @@ time_format = "%I:%M %p"
 
 ; Use URL parameters instead of CGI PATH_INFO. This is useful for
 ; broken server setups that don't support the PATH_INFO environment
-; variable.
+; variable. Use of this mode is recommended as a last resort.
 disable_path_info = Off
 
 ; Use fopen(...) for URL-based reads. Modern versions of dspace
@@ -89,6 +89,11 @@ allow_url_fopen = Off
 ; rewrite directive to be enabled in your .htaccess or httpd.conf.
 ; See FAQ for more details.
 restful_urls = Off
+
+; Allow the X_FORWARDED_FOR header to override the REMOTE_ADDR as the source IP
+; Set this to "On" if you are behind a reverse proxy and you control the X_FORWARDED_FOR
+; Warning: This defaults to "On" if unset for backwards compatibility.
+trust_x_forwarded_for = Off
 
 ; Allow javascript files to be served through a content delivery network (set to off to use local files)
 enable_cdn = On
