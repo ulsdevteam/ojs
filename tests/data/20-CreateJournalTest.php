@@ -44,7 +44,7 @@ class CreateJournalTest extends WebTestCase {
 		$this->type('id=journalPath', 'publicknowledge');
 
 		// Flip to French and enter data there
-		$this->select('id=formLocale', 'label=Français');
+		$this->select('id=formLocale', 'value=fr_CA');
 		$this->clickAndWait('css=#languageSelector > input.button');
 		$this->type('id=title', 'Journal de la connaissance du public');
 		$this->typeTinyMCE('description', 'Le Journal de Public Knowledge est une publication trimestrielle évaluée par les pairs sur le thème de l\'accès du public à la science.');
@@ -76,9 +76,15 @@ class CreateJournalTest extends WebTestCase {
 		$this->type('id=supportName', 'Ramiro Vaca');
 		$this->clickAndWait('css=input.button.defaultButton');
 
-		// Page 3: Enable keywords in metadata
+		// Page 3
+		// - Enable keywords in metadata
 		$this->clickAndWait('link=3. Submissions');
 		$this->click('id=metaSubject');
+		// - Set up permissions
+		$this->click('id=copyrightHolderType-author');
+		$this->click('id=copyrightYearBasis-article');
+		$this->select('id=licenseURLSelect', 'label=CC Attribution-NonCommercial-NoDerivatives 4.0');
+		// - Save changes
 		$this->clickAndWait('css=input.button.defaultButton');
 
 		// Page 4: Turn on optional roles
