@@ -169,6 +169,15 @@ class CrossRefExportPlugin extends DOIExportPlugin {
 	}
 
 	/**
+	 * @copydoc DOIExportPlugin::displayArticleList
+	 */
+	function displayArticleList(&$templateMgr, &$journal) {
+		$templateMgr->assign('depositStatusSettingName', $this->getDepositStatusSettingName());
+		$templateMgr->assign('depositStatusUrlSettingName', $this->getDepositStatusUrlSettingName());
+		return parent::displayArticleList($templateMgr, $journal);
+	}
+
+	/**
 	 * The selected issue can be exported if it contains an article that has a DOI,
 	 * and the articles containing a DOI also have a date published.
 	 * The selected article can be exported if it has a DOI and a date published.
@@ -290,6 +299,9 @@ class CrossRefExportPlugin extends DOIExportPlugin {
 				if (is_a($article, 'Article')) {
 					// we only save the URL of the last deposit so it can be checked later on
 					$articleDao->updateSetting($article->getId(), $this->getDepositStatusUrlSettingName(), $depositLocation, 'string');
+
+					// update the status of the DOIs
+					$this->updateDepositStatus($request, $journal, $article);
 				}
 			}
 		}
@@ -306,6 +318,7 @@ class CrossRefExportPlugin extends DOIExportPlugin {
 	 */
 	function updateDepositStatus(&$request, &$journal, $article) {
 		$articleDao =& DAORegistry::getDAO('ArticleDAO');  /* @var $articleDao ArticleDAO */
+		import('lib.pkp.classes.core.JSONManager');
 		$jsonManager = new JSONManager();
 
 		// Prepare HTTP session.
@@ -318,7 +331,11 @@ class CrossRefExportPlugin extends DOIExportPlugin {
 
 		$doi = urlencode($article->getPubId('doi'));
 		$params = 'filter=doi:' . $doi ;
-		curl_setopt($curlCh, CURLOPT_URL, CROSSREF_API_URL . '?' . $params);
+		curl_setopt(
+			$curlCh,
+			CURLOPT_URL,
+			CROSSREF_API_URL . (strpos(CROSSREF_API_URL,'?')===false?'?':'&') . $params
+		);
 
 		// try to fetch from the new API
 		$response = curl_exec($curlCh);
@@ -334,6 +351,12 @@ class CrossRefExportPlugin extends DOIExportPlugin {
 					$this->markRegistered($request, $article);
 					return true;
 				}
+				if ( $item->status == 'failed' ) {
+					$articleDao->updateSetting($article->getId(), $this->getDepositStatusSettingName(), 'failed', 'string');
+				}
+				elseif ( $item->status == 'submitted' ) {
+					$articleDao->updateSetting($article->getId(), $this->getDepositStatusSettingName(), 'submitted', 'string');
+				}
 			}
 
 			// if there have been past attempts, save the most recent one's status for display to user
@@ -344,7 +367,11 @@ class CrossRefExportPlugin extends DOIExportPlugin {
 		}
 
 		// now try the old crossref API and just search for the DOI
-		curl_setopt($curlCh, CURLOPT_URL, CROSSREF_SEARCH_API . '?q=' . $doi);
+		curl_setopt(
+			$curlCh,
+			CURLOPT_URL,
+			CROSSREF_SEARCH_API . (strpos(CROSSREF_SEARCH_API,'?')===false?'?':'&') . 'q=' . $doi
+		);
 		$response = curl_exec($curlCh);
 		if ( $response && curl_getinfo($curlCh, CURLINFO_HTTP_CODE) == CROSSREF_API_RESPONSE_OK ) {
 			$response = $jsonManager->decode($response);
@@ -367,7 +394,6 @@ class CrossRefExportPlugin extends DOIExportPlugin {
 	function callbackParseCronTab($hookName, $args) {
 		$taskFilesPath =& $args[0];
 		$taskFilesPath[] = $this->getPluginPath() . DIRECTORY_SEPARATOR . 'scheduledTasks.xml';
-		error_log($this->getPluginPath() . DIRECTORY_SEPARATOR . 'scheduledTasks.xml');
 
 		return false;
 	}
