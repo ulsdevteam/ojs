@@ -649,6 +649,10 @@ class UsageStatsLoader extends FileLoader {
 		// We only expect one file inside the directory.
 		$fileCount = 0;
 		foreach (glob($dir . DIRECTORY_SEPARATOR . "*.*") as $file) {
+			// Workaround for Solaris expanding *.* into . and .. directories
+			if ($file == $dir . DIRECTORY_SEPARATOR . '.' || $file == $dir . DIRECTORY_SEPARATOR . '..') {
+				continue;
+			}
 			$fileCount++;
 		}
 		if (!$file || $fileCount !== 1) {

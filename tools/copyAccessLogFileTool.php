@@ -115,6 +115,10 @@ class CopyAccessLogFileTool extends CommandLineTool {
 			// Directory.
 			$filesToCopy = glob($filePath . DIRECTORY_SEPARATOR . '*.*');
 			foreach ($filesToCopy as $file) {
+				 // Workaround for Solaris expanding *.* into . and .. directories
+				if ($file == $filePath . DIRECTORY_SEPARATOR . '.' || $file == $filePath . DIRECTORY_SEPARATOR . '..') {
+					continue;
+				}
 				// If a base filename is given as a parameter, check it.
 				if (count($this->argv) == 2) {
 					$baseFilename = $this->argv[1];
