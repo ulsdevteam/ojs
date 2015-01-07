@@ -139,7 +139,7 @@ class UsageStatsLoader extends FileLoader {
 	function executeActions() {
 		$plugin =& $this->_plugin;
 		if (!$plugin->getEnabled()) {
-			$this->addExecutionLogEntry(__('plugins.generic.usageStats.openFileFailed'), SCHEDULED_TASK_MESSAGE_TYPE_WARNING);
+			$this->addExecutionLogEntry(__('plugins.generic.usageStats.notEnabled'), SCHEDULED_TASK_MESSAGE_TYPE_WARNING);
 			return true;
 		}
 
@@ -154,6 +154,13 @@ class UsageStatsLoader extends FileLoader {
 		$geoTool = $this->_geoLocationTool;
 		if (!$fhandle) {
 			$errorMsg = __('plugins.generic.usageStats.openFileFailed', array('file' => $filePath));
+			return false;
+		}
+		if (!$this->_counterRobotsListFile) {
+			$errorMsg = __('plugins.generic.usageStats.noCounterBotList', array('botlist' => $this->_counterRobotsListFile, 'file' => $filePath));
+			return false;
+		} elseif (!file_exists($this->_counterRobotsListFile)) {
+			$errorMsg = __('plugins.generic.usageStats.failedCounterBotList', array('botlist' => $this->_counterRobotsListFile, 'file' => $filePath));
 			return false;
 		}
 
@@ -649,6 +656,10 @@ class UsageStatsLoader extends FileLoader {
 		// We only expect one file inside the directory.
 		$fileCount = 0;
 		foreach (glob($dir . DIRECTORY_SEPARATOR . "*.*") as $file) {
+			// Workaround for Solaris expanding *.* into . and .. directories
+			if ($file == $dir . DIRECTORY_SEPARATOR . '.' || $file == $dir . DIRECTORY_SEPARATOR . '..') {
+				continue;
+			}
 			$fileCount++;
 		}
 		if (!$file || $fileCount !== 1) {
