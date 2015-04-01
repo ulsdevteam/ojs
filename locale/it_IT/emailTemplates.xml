@@ -726,18 +726,19 @@ Grazie,
 		<description>Questa email viene spedita a un nuovo revisore registrato come benvenuto nel sistema e gli fornsice una nota con nome utente e password</description>
 	</email_text>
 	<email_text key="NOTIFICATION">
-		<subject>Nuova notifica da {$siteTitle}</subject>
-		<body>Hai ricevuto una nuova notifica da  {$siteTitle}:
+		<subject>Nuova notifica da {$journalName}</subject>
+		<body>Hai ricevuto una nuova notifica da  {$journalName}:
 
 {$notificationContents}
 
 Link: {$url}
 
 {$principalContactSignature}</body>
+		<description></description>
 	</email_text>
 	<email_text key="NOTIFICATION_MAILLIST">
-		<subject>Nuova notifica da {$siteTitle}</subject>
-		<body>Hai ricevuto una notifica da  {$siteTitle}:
+		<subject>Nuova notifica da {$journalName}</subject>
+		<body>Hai ricevuto una notifica da {$journalName}:
 --
 {$notificationContents}
 
@@ -747,10 +748,11 @@ Link: {$url}
 Se non vuoi ricevere altre notifiche, vai alla pagina {$unsubscribeLink} per cancellarti.
 
 {$principalContactSignature}</body>
+		<description></description>
 	</email_text>
 	<email_text key="NOTIFICATION_MAILLIST_WELCOME">
-		<subject>Benvenuto nella mailing list di {$siteTitle}!</subject>
-		<body>Hai chiesto di ricevere notifiche da {$siteTitle}.
+		<subject>Benvenuto nella mailing list di {$journalName}!</subject>
+		<body>Hai chiesto di ricevere notifiche da {$journalName}.
 
 Clicca su questo link per confermare e aggiungere il tuo indirizzo nella lista di distribuzione: {$confirmLink}
 

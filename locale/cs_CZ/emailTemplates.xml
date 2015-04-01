@@ -703,18 +703,19 @@ Pokud máte nějaké otázky, neváhejte mě prosím kontaktovat.
 		<description>Tento email informuje předplatitele, že jeho předplatné vypršelo. Obsahuje URL časopisu a instrukce pro přístup.</description>
 	</email_text>
 	<email_text key="NOTIFICATION">
-		<subject>Nové oznámení od {$siteTitle}</subject>
-		<body>Máte nové oznámení od {$siteTitle}:
+		<subject>Nové oznámení od {$journalName}</subject>
+		<body>Máte nové oznámení od {$journalName}:
 
 {$notificationContents}
 
 Odkaz: {$url}
 
 {$principalContactSignature}</body>
+		<description></description>
 	</email_text>
 	<email_text key="NOTIFICATION_MAILLIST">
-		<subject>Nové oznámení od {$siteTitle}</subject>
-		<body>Máte nové oznámení od {$siteTitle}:
+		<subject>Nové oznámení od {$journalName}</subject>
+		<body>Máte nové oznámení od {$journalName}:
 --
 {$notificationContents}
 
@@ -724,10 +725,11 @@ Odkaz: {$url}
 Pokud chcete ukončit odebírání těchto informačních emalů, přejděte prosím na {$unsubscribeLink} a vložte vaši emailovou adresu a heslo.
 
 {$principalContactSignature}</body>
+		<description></description>
 	</email_text>
 	<email_text key="NOTIFICATION_MAILLIST_WELCOME">
-		<subject>Vítejte na rezesílacím seznamu {$siteTitle}!</subject>
-		<body>Přihlásil jste se k odběru oznámení z {$siteTitle}.
+		<subject>Vítejte na rezesílacím seznamu {$journalName}!</subject>
+		<body>Přihlásil jste se k odběru oznámení z {$journalName}.
 
 Pro potvrzení Vaší žádosti a přidání Vaší emailové adresy do rozesílacího seznamu klikněte prosím na tento odkaz: {$confirmLink}
 
@@ -736,6 +738,7 @@ Pokud si přejete ukončit odebírání informačních emailů, přejděte pros�
 Vaše heslo pro zakázání informačních emailů je: {$password}
 
 {$principalContactSignature}</body>
+		<description></description>
 	</email_text>
 	<email_text key="EDITOR_DECISION_ACCEPT">
 		<subject>Rozhodnutí editora</subject>

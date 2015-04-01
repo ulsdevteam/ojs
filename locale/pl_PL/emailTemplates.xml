@@ -10,8 +10,8 @@
   -->
 <email_texts locale="pl_PL">
 	<email_text key="NOTIFICATION">
-		<subject>Nowe powiadomienie ze strony czasopisma {$siteTitle}</subject>
-		<body>Na stronie czasopisma {$siteTitle} oczekuje nowe powiadomienie:
+		<subject>Nowe powiadomienie ze strony czasopisma {$journalName}</subject>
+		<body>Na stronie czasopisma {$journalName} oczekuje nowe powiadomienie:
 
 {$notificationContents}
 
@@ -21,8 +21,8 @@ Link: {$url}
 		<description>Wiadomość jest przesyłana do zarejestrowanych użytkowników, którzy zadeklarowali chęć otrzymywania określonego typu powiadomień.</description>
 	</email_text>
 	<email_text key="NOTIFICATION_MAILLIST">
-		<subject>Nowe powiadomienie ze strony czasopisma {$siteTitle}</subject>
-		<body>Na stronie czasopisma {$siteTitle} oczekuje nowe powiadomienie:
+		<subject>Nowe powiadomienie ze strony czasopisma {$journalName}</subject>
+		<body>Na stronie czasopisma {$journalName} oczekuje nowe powiadomienie:
 
 {$notificationContents}
 
@@ -36,8 +36,8 @@ W celu wyłączenia subskrypcji powiadomień na skrzynkę e-mail, należy przej�
 		<description>Wiadomość jest przesyłana do niezarejestrowanych użytkowników z listy mailingowej powiadomień.</description>
 	</email_text>
 	<email_text key="NOTIFICATION_MAILLIST_WELCOME">
-		<subject>Witamy na liście mailingowej czasopisma {$siteTitle}!</subject>
-		<body>Zarejestrował/a się Pan/Pani na stronie czasopisma {$siteTitle}, aby subskrybować powiadomienia.
+		<subject>Witamy na liście mailingowej czasopisma {$journalName}!</subject>
+		<body>Zarejestrował/a się Pan/Pani na stronie czasopisma {$journalName}, aby subskrybować powiadomienia.
 
 Aby potwierdzić należy subskrypcję powiadomień należy kliknąć w poniższy link:
 {$confirmLink}

@@ -654,8 +654,8 @@ Muchas gracias por su atención y por su colaboración en {$journalName}</body>
 		<description>Este email se envía a los nuevos revisores para darles la bienvenida al sistema y proporcionarles sus datos de acceso.</description>
 	</email_text>
 	<email_text key="NOTIFICATION">
-		<subject>Nueva notificación desde {$siteTitle}</subject>
-		<body>Tiene una nueva notificación desde {$siteTitle}:
+		<subject>Nueva notificación desde {$journalName}</subject>
+		<body>Tiene una nueva notificación desde {$journalName}:
 
 {$notificationContents}
 
@@ -665,8 +665,8 @@ Enlace: {$url}
 		<description>El email es enviado a usuarios registrados que han seleccionado recibir notificaciones.</description>
 	</email_text>
 	<email_text key="NOTIFICATION_MAILLIST">
-		<subject>Nueva notificación desde {$siteTitle}</subject>
-		<body>Tiene una nueva notificación desde {$siteTitle}:
+		<subject>Nueva notificación desde {$journalName}</subject>
+		<body>Tiene una nueva notificación desde {$journalName}:
 --
 {$notificationContents}
 
@@ -679,8 +679,8 @@ Si no desea recibir los correos de notificaciones, vaya a {$unsubscribeLink} e i
 		<description>Este email es enviado a usuarios sin registrar en las listas de notificaciones.</description>
 	</email_text>
 	<email_text key="NOTIFICATION_MAILLIST_WELCOME">
-		<subject>Bienvenido a la lista de correo de {$siteTitle} !</subject>
-		<body>Has escogido recibir notificaciones desde {$siteTitle}.
+		<subject>Bienvenido a la lista de correo de {$journalName} !</subject>
+		<body>Has escogido recibir notificaciones desde {$journalName}.
 
 Haga clic en este enlace para confirmar tu petición y añadir tu email a la lista de notificaciones:
  {$confirmLink}

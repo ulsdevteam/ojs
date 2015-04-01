@@ -652,18 +652,19 @@ På forhånd takk,
 		<description>Denne e-posten sendes til nyregistrerte fagkonsulenter for å ønske dem velkommen til systemet, og gi dem tilgang til deres brukernavn og passord.</description>
 	</email_text>
 	<email_text key="NOTIFICATION">
-		<subject>Ny melding fra {$siteTitle}</subject>
-		<body>Du har fått en ny melding fra {$siteTitle}:
+		<subject>Ny melding fra {$journalName}</subject>
+		<body>Du har fått en ny melding fra {$journalName}:
 
 {$notificationContents}
 
 Lenke: {$url}
 
 {$principalContactSignature}</body>
+		<description></description>
 	</email_text>
 	<email_text key="NOTIFICATION_MAILLIST">
-		<subject>Ny melding fra {$siteTitle}</subject>
-		<body>Du har en ny melding fra {$siteTitle}:
+		<subject>Ny melding fra {$journalName}</subject>
+		<body>Du har en ny melding fra {$journalName}:
 --
 {$notificationContents}
 
@@ -673,10 +674,11 @@ Lenke: {$url}
 Om du ikke lenger ønsker å motte slike meldinger per e-post, gå til  {$unsubscribeLink} og oppgi din e-postadresse og passord.
 
 {$principalContactSignature}</body>
+		<description></description>
 	</email_text>
 	<email_text key="NOTIFICATION_MAILLIST_WELCOME">
-		<subject>Velkommen til e-postlisten til {$siteTitle}!</subject>
-		<body>Du har bedt om å få meldinger fra {$siteTitle}.
+		<subject>Velkommen til e-postlisten til {$journalName}!</subject>
+		<body>Du har bedt om å få meldinger fra {$journalName}.
 
 Vennligst klikke på denne lenken for å bekrefte ditt ønske og legge din e-postadresse til e-postlisten: {$confirmLink}
 
@@ -685,6 +687,7 @@ Om du ikke lenger ønsker å få meldinger via e-post, gå til {$unsubscribeLink
 Ditt passord for å slå av e-postmeldinger er: {$password}
 
 {$principalContactSignature}</body>
+		<description></description>
 	</email_text>
 	<email_text key="EDITOR_DECISION_ACCEPT">
 		<subject>Redaktørens beslutning</subject>
