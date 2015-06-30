@@ -7,3 +7,6 @@
 [submodule "plugins/generic/pdfJsViewer"]
 	path = plugins/generic/pdfJsViewer
 	url = git://github.com/pkp/pdfJsViewer
+[submodule "plugins/generic/plumAnalytics"]
+	path = plugins/generic/plumAnalytics
+	url = https://github.com/ulsdevteam/ojs-plum-plugin.git
