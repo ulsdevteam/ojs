@@ -52,7 +52,12 @@
 			{if !$file.isDir}
 				<a href="{url op="files" path=$filePath|explode:"/" download=1}" class="action">{translate key="common.download"}</a>&nbsp;|
 			{/if}
+			{if $currentDir}
 			<a href="{url op="fileDelete" path=$filePath|explode:"/"}" onclick="return confirm('{translate|escape:"jsparam" key="manager.files.confirmDelete"}')" class="action">{translate key="common.delete"}</a>
+			{/if}
+			{if $file.permalink}
+			|&nbsp;<a href="{$file.permalink}" class="action">{translate key="common.url"}</a>
+			{/if}
 		</td>
 	</tr>
 	<tr>
@@ -68,6 +73,7 @@
 {/foreach}
 </table>
 
+{if $currentDir}
 <form method="post" action="{url op="fileUpload" path=$currentDir|explode:"/"}" enctype="multipart/form-data">
 	<input type="file" size="20" name="file" class="uploadField" />
 	<input type="submit" value="{translate key="manager.files.uploadFile"}" class="button" />
@@ -77,6 +83,7 @@
 	<input type="text" size="20" maxlength="255" name="dirName" class="textField" />
 	<input type="submit" value="{translate key="manager.files.createDir"}" class="button" />
 </form>
+{/if}
 
 <p>{translate key="manager.files.note"}</p>
 
