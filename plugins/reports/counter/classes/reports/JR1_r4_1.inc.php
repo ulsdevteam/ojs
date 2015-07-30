@@ -90,8 +90,8 @@ class JR1_r4_1 extends CounterRelease4_1 {
 			foreach ($results as $rs) {
 				// Identify the type of request
 				$metricTypeKey = $this->getKeyForFiletype($rs[STATISTICS_DIMENSION_FILE_TYPE]);
-				// Period changes trigger a new ItemPerformace metric
-				if ($lastPeriod != $rs[STATISTICS_DIMENSION_MONTH]) {
+				// Period changes or greater trigger a new ItemPerformace metric
+				if ($lastPeriod != $rs[STATISTICS_DIMENSION_MONTH] || $lastJournal != $rs[STATISTICS_DIMENSION_CONTEXT_ID]) {
 					if ($lastPeriod != 0) {
 						$metrics[] = $this->createMetricByMonth($lastPeriod, $counters);
 						$counters = array();
@@ -141,6 +141,7 @@ class JR1_r4_1 extends CounterRelease4_1 {
 				}
 			}
 		}
+		$journalPubIds[] = new COUNTER\Identifier(COUNTER41_LITERAL_PROPRIETARY, $journal->getPath());
 		$reportItem = array();
 		try {
 			$reportItem = new COUNTER\ReportItems(__('common.openJournalSystems'), $journalName, COUNTER41_LITERAL_JOURNAL, $metrics, NULL, $journalPubIds);

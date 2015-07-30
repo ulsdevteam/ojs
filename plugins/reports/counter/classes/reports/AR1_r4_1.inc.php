@@ -139,6 +139,7 @@ class AR1_r4_1 extends CounterRelease4_1 {
 				}
 			}
 		}
+		$journalPubIds[] = new COUNTER\Identifier(COUNTER41_LITERAL_PROPRIETARY, $journal->getPath());
 		$pubIdPlugins =& PluginRegistry::loadCategory('pubIds', true, $journalId);
 		$articlePubIds = array();
 		$articlePubIds[] = new COUNTER\Identifier(COUNTER41_LITERAL_PROPRIETARY, $submissionId);
