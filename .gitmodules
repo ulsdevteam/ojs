@@ -7,3 +7,6 @@
 [submodule "plugins/generic/pdfJsViewer"]
 	path = plugins/generic/pdfJsViewer
 	url = git://github.com/pkp/pdfJsViewer
+[submodule "plugins/generic/orcidProfile"]
+	path = plugins/generic/orcidProfile
+	url = ssh://git@github.com/ulsdevteam/pkp-orcidprofile
