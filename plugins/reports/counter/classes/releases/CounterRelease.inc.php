@@ -15,6 +15,7 @@ require_once(dirname(dirname(__FILE__)).'/COUNTER/COUNTER.php');
 
 define('COUNTER_EXCEPTION_WARNING', 0);
 define('COUNTER_EXCEPTION_ERROR', 1);
+define('COUNTER_EXCEPTION_PARTIAL_DATA', 4);
 define('COUNTER_EXCEPTION_NO_DATA', 8);
 define('COUNTER_EXCEPTION_BAD_COLUMNS', 16);
 define('COUNTER_EXCEPTION_BAD_FILTERS', 32);
@@ -188,7 +189,7 @@ class CounterRelease {
 	 * @return array of Exceptions
 	 */
 	function getErrors() {
-		return $this->_errors;
+		return $this->_errors ? $this->_errors : array();
 	}
 
 	/**

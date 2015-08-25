@@ -39,7 +39,14 @@ class CounterRelease4_1 extends CounterRelease {
 	 */
 	function getMetricsXML($columns = array(), $filters = array(), $orderBy = array(), $range = null) {
 		$reportItems = $this->getMetrics($columns, $filters, $orderBy, $range);
-		if (!$this->getErrors()) {
+		$errors = $this->getErrors();
+		$fatal = false;
+		foreach ($errors as $error) {
+			if ($error->getCode() & COUNTER_EXCEPTION_ERROR) {
+				$fatal = true;
+			}
+		}
+		if (!$fatal) {
 			try {
 				$report = new COUNTER\Report(
 					String::generateUUID(),
