@@ -91,7 +91,9 @@ class FilesHandler extends ManagerHandler {
 							'size' => $isDir ? '' : $fileManager->getNiceFileSize(filesize($filePath)),
 						);
 						if ($location == 'public' && !$isDir) {
-							$info['permalink'] = $request->getBasePath().'/public'.$this->_getRealFilesSubdir($request, $currentDir).$file;
+							$dir = $this->_getRealFilesSubdir($request, $currentDir);
+							$dir .= substr($dir, -1) == '/' ? '' : '/';
+							$info['permalink'] = $request->getBasePath().'/public'.$dir.$file;
 						}
 						$files[$file] = $info;
 					}
