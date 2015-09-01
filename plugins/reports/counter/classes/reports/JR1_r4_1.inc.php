@@ -102,7 +102,12 @@ class JR1_r4_1 extends CounterRelease4_1 {
 				// Journal changes trigger a new ReportItem
 				if ($lastJournal != $rs[STATISTICS_DIMENSION_CONTEXT_ID]) {
 					if ($lastJournal != 0 && $metrics) {
-						$reportItems[] = $this->_createReportItem($lastJournal, $metrics);
+						$item = $this->_createReportItem($lastJournal, $metrics);
+						if ($item) {
+							$reportItems[] = $item;
+						} else {
+							$this->setError(new Exception(__('plugins.reports.counter.exception.partialData'), COUNTER_EXCEPTION_WARNING | COUNTER_EXCEPTION_PARTIAL_DATA));
+						}
 						$metrics = array();
 					}
 				}
@@ -113,7 +118,12 @@ class JR1_r4_1 extends CounterRelease4_1 {
 				$metrics[] = $this->createMetricByMonth($lastPeriod, $counters);
 			}
 			if ($metrics) {
-				$reportItems[] = $this->_createReportItem($lastJournal, $metrics);
+				$item = $this->_createReportItem($lastJournal, $metrics);
+				if ($item) {
+					$reportItems[] = $item;
+				} else {
+					$this->setError(new Exception(__('plugins.reports.counter.exception.partialData'), COUNTER_EXCEPTION_WARNING | COUNTER_EXCEPTION_PARTIAL_DATA));
+				}
 			}
 		} else {
 			$this->setError(new Exception(__('plugins.reports.counter.exception.noData'), COUNTER_EXCEPTION_ERROR | COUNTER_EXCEPTION_NO_DATA));
@@ -125,11 +135,14 @@ class JR1_r4_1 extends CounterRelease4_1 {
 	 * Given a journalId and an array of COUNTER\Metrics, return a COUNTER\ReportItems
 	 * @param int $journalId
 	 * @param array $metrics COUNTER\Metric array
-	 * @return COUNTER\ReportItems
+	 * @return mixed COUNTER\ReportItems or false
 	 */
 	private function _createReportItem($journalId, $metrics) {
 		$journalDao = DAORegistry::getDAO('JournalDAO');
 		$journal = $journalDao->getById($journalId);
+		if (!$journal) {
+			return false;
+		}
 		$journalName = $journal->getJournalTitle();
 		$journalPubIds = array();
 		foreach (array('print', 'online') as $issnType) {
