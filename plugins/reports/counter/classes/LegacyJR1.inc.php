@@ -27,52 +27,6 @@ class LegacyJR1 {
 		$this->parentPluginName = $parentPluginName;
 	}
 
-	/*
-	 * fetch a COUNTER report as XML
-	 * @param $columns string|array column (aggregation level) selection
-	 * @param $filters array report-level filter selection
-	 * @param $orderBy array order criteria
-	 * @param $range null|DBResultRange paging specification
-	 * @see ReportPlugin::getMetrics for more details
-	 * @returns string
-	 */
-	function deprecate_getMetricsXML($columns = array(), $filters = array(), $orderBy = array(), $range = null) {
-		// TODO: Could probably use some better checking here
-		if (!is_array($columns)) { $columns = array(); }
-		if (!is_array($filters)) { $filters = array(); }
-		if (!is_array($orderBy)) { $orderBy = array(); }
-		$templateManager =& TemplateManager::getManager();
-		// Process the allowed parameters, unsetting them as we go
-		if (isset($filters[STATISTICS_DIMENSION_DAY]['from'])) {
-			$begin = $filters[STATISTICS_DIMENSION_DAY]['from'];
-			unset($filters[STATISTICS_DIMENSION_DAY]['from']);
-		} else {
-			$begin = date_format(date_create("first day of previous month"), 'Ymd');
-		}
-		if (isset($filters[STATISTICS_DIMENSION_DAY]['to'])) {
-			$end = $filters[STATISTICS_DIMENSION_DAY]['to'];
-			unset($filters[STATISTICS_DIMENSION_DAY]['to']);
-		} else {
-			$end = date_format(date_create("last day of previous month"), 'Ymd');
-		}
-		unset($filters[STATISTICS_DIMENSION_DAY]);
-		// If any additional parameters remain, they are unsupported
-		if (array_keys($filters)) {
-			$this->setError(new Exception(__('plugins.reports.counter.1a.exception.filter'), COUNTER_EXCEPTION_WARNING & COUNTER_EXCEPTION_BAD_FILTERS));
-		}
-		if (array_keys($columns)) {
-			$this->setError(new Exception(__('plugins.reports.counter.1a.exception.columns'), COUNTER_EXCEPTION_WARNING & COUNTER_EXCEPTION_BAD_COLUMNS));
-		}
-		if (array_keys($orderBy)) {
-			$this->setError(new Exception(__('plugins.reports.counter.1a.exception.orderby'), COUNTER_EXCEPTION_WARNING & COUNTER_EXCEPTION_BAD_ORDERBY));
-		}
-		if ($range) {
-			$this->setError(new Exception(__('plugins.reports.counter.1a.exception.range'), COUNTER_EXCEPTION_WARNING & COUNTER_EXCEPTION_BAD_RANGE));
-		}
-		$this->_assignTemplateCounterXML($templateManager, $begin, $end, false);
-		return $templateManager->fetch($this->getParentPlugin()->getTemplatePath() . 'reportxml.tpl', 'text/xml');
-	}
-
 	/**
 	 * Display the JR1 (R3) report
 	 * @param $request PKPRequest
