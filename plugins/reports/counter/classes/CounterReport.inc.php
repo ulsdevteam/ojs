@@ -196,22 +196,24 @@ class CounterReport {
 		}
 		if (!$fatal) {
 			try {
-				$report = new COUNTER\Report(
-					String::generateUUID(),
-					$this->getRelease(),
-					$this->getCode(),
-					$this->getTitle(),
-					new COUNTER\Customer(
-						'0', // customer id is unused
-						$reportItems,
-						__('plugins.reports.counter.allCustomers')
-					),
-					new COUNTER\Vendor(
-						$this->getVendorID(),
-						$this->getVendorName(),
-						$this->getVendorContacts(),
-						$this->getVendorWebsiteUrl(),
-						$this->getVendorLogoUrl()
+				$report = new COUNTER\Reports(
+					new COUNTER\Report(
+						String::generateUUID(),
+						$this->getRelease(),
+						$this->getCode(),
+						$this->getTitle(),
+						new COUNTER\Customer(
+							'0', // customer id is unused
+							$reportItems,
+							__('plugins.reports.counter.allCustomers')
+						),
+						new COUNTER\Vendor(
+							$this->getVendorID(),
+							$this->getVendorName(),
+							$this->getVendorContacts(),
+							$this->getVendorWebsiteUrl(),
+							$this->getVendorLogoUrl()
+						)
 					)
 				);
 			} catch (Exception $e) {
