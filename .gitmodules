@@ -13,3 +13,6 @@
 [submodule "plugins/reports/counter/classes/COUNTER"]
 	path = plugins/reports/counter/classes/COUNTER
 	url = git://github.com/ulsdevteam/COUNTER
+[submodule "plugins/generic/sushiLite"]
+	path = plugins/generic/sushiLite
+	url = git://github.com/ulsdevteam/ojs-sushiLite-plugin.git
