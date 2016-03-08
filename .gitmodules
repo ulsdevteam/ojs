@@ -13,3 +13,6 @@
 [submodule "plugins/reports/counter/classes/COUNTER"]
 	path = plugins/reports/counter/classes/COUNTER
 	url = git://github.com/ulsdevteam/COUNTER
+[submodule "plugins/generic/plumAnalytics"]
+	path = plugins/generic/plumAnalytics
+	url = https://github.com/ulsdevteam/ojs-plum-plugin.git
