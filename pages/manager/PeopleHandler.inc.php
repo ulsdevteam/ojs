@@ -152,6 +152,8 @@ class PeopleHandler extends ManagerHandler {
 		$session =& Request::getSession();
 		$session->setSessionVar('enrolmentReferrer', Request::getRequestedArgs());
 
+		$templateMgr->assign('isSiteAdmin', Validation::isSiteAdmin());
+
 		$templateMgr->display('manager/people/enrollment.tpl');
 	}
 
@@ -311,6 +313,10 @@ class PeopleHandler extends ManagerHandler {
 		$this->validate();
 		$this->setupTemplate(true);
 
+		if (!Validation::isSiteAdmin()) {
+			Request::redirect(null, null, 'people');
+		}
+
 		$rolePath = isset($args[0]) ? $args[0] : '';
 		$roleDao =& DAORegistry::getDAO('RoleDAO');
 		$roleId = $roleDao->getRoleIdFromPath($rolePath);
@@ -339,6 +345,10 @@ class PeopleHandler extends ManagerHandler {
 	 */
 	function enrollSync($args) {
 		$this->validate();
+
+		if (!Validation::isSiteAdmin()) {
+			Request::redirect(null, null, 'people');
+		}
 
 		$journal =& Request::getJournal();
 		$rolePath = Request::getUserVar('rolePath');
