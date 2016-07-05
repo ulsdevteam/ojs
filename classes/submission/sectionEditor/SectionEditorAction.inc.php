@@ -2026,7 +2026,7 @@ class SectionEditorAction extends Action {
 
 			if ($decisionConst == SUBMISSION_EDITOR_DECISION_DECLINE) {
 				// If the most recent decision was a decline,
-				// sending this email archives the submission.
+				// archive the submission.
 				$sectionEditorSubmission->setStatus(STATUS_ARCHIVED);
 				$sectionEditorSubmission->stampStatusModified();
 				$sectionEditorSubmissionDao->updateSectionEditorSubmission($sectionEditorSubmission);

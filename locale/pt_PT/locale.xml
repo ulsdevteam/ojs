@@ -257,7 +257,7 @@ Note que a interface OAI pode ser desactivada para este portal nas configuraçõ
 </ul>]]></message>
 
 	<!-- System Information -->
-	<message key="admin.overwriteConfigFileInstructions"><![CDATA[<h4>AVISO!</div>
+	<message key="admin.overwriteConfigFileInstructions"><![CDATA[<h4>AVISO!</h4>
 <p>O sistema não conseguiu alterar automaticamente o documento de configuração. Para aplicar as alterações é necessário editar o ficheiro <tt>config.inc.php</tt> manualmente em algum editor de texto, substituindo-o com o conteúdo do campo a seguir.</p>]]></message>
 
 
@@ -296,10 +296,10 @@ Escolha um modelo para administrar os aspectos do processo editorial. (Para desi
 	Esta tarefa deve ser executada por um administrador do portal.]]></message>
 
 	<!-- Used by editor in submission review / editing -->
-	<message key="editor.article.selectReviewerNotes"><![CDATA[O nome é o atalho para o perfil do revisor.<br/>
-Classificação vai até 5 (Excelente).<br/>
+	<message key="editor.article.selectReviewerNotes"><![CDATA[O nome é o atalho para o perfil do revisor.<br />
+Classificação vai até 5 (Excelente).<br />
 Dias refere-se ao tempo médio para concluir uma revisão.<br />
-Última é a data da última aceitação de revisão,<br/>
+Última é a data da última aceitação de revisão,<br />
 Activo indica revisão em consideração ou em progresso.]]></message>
 
 	<!-- Section Editor -->
@@ -692,8 +692,8 @@ O servidor actualmente tem suporte a mbstring: <strong>{$supportsMBString}</stro
 
 	<!-- RT Searches -->
 
-	<message key="rt.admin.validateUrls.description"><![CDATA[URLs possivelmente inválidas para os sistemas de pesquisa online exibidos a seguir.<br/>
-É necessário verificar manualmente os URLs marcadas como inválidas, pois o teste não é 100% preciso.<br/>
+	<message key="rt.admin.validateUrls.description"><![CDATA[URLs possivelmente inválidas para os sistemas de pesquisa online exibidos a seguir.<br />
+É necessário verificar manualmente os URLs marcadas como inválidas, pois o teste não é 100% preciso.<br />
 A validação pode falhar em URLs para pesquisa que requeiram dados via método POST.]]></message>
 
 	<!-- RT Entities -->
@@ -993,15 +993,6 @@ Pode-se opcionalmente informar o motivo pelo qual está sendo desactivado o regi
 	<message key="issue.viewIssueDescription">Ver ou download o número completo</message>
 	<message key="plugins.categories.pubIds">Identificadores Públicos de Plugins</message>
 	<message key="plugins.categories.pubIds.description">Estes plugins implementam o suporte ao identificador público.</message>
-	<message key="editor.submissionEditing.notes"><![CDATA[<ol>
-	<li>Highlighted items indicate action is required by an editor, labelled as follows:
-		<ul>
-			<li class="highlightCopyediting">An action is required in the copyediting stage</li>
-			<li class="highlightLayoutEditing">An action is required in the layout editing stage</li>
-			<li class="higlightProofreading">An action is required in the proofreading stage</li>
-		</ul>
-	</li>
-</ol>]]></message>
 	<message key="site.noJournals">Não existem revistas.</message>
 	<message key="gifts.buyer">De</message>
 	<message key="gifts.buyerDescription">Quem oferece o donativo?</message>
