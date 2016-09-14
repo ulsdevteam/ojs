@@ -16,3 +16,6 @@
 [submodule "plugins/generic/plumAnalytics"]
 	path = plugins/generic/plumAnalytics
 	url = https://github.com/ulsdevteam/ojs-plum-plugin.git
+[submodule "plugins/generic/sushiLite"]
+	path = plugins/generic/sushiLite
+	url = https://github.com/ulsdevteam/ojs-sushiLite-plugin.git
