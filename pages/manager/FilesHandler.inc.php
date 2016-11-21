@@ -16,6 +16,12 @@
 import('pages.manager.ManagerHandler');
 
 class FilesHandler extends ManagerHandler {
+	
+	/**
+	 * @var $locationOptions array()
+	 *  This array lists possible path prefixes, and the associated config keys
+	 */
+	var $locationOptions = array('public' => array('config' => 'public_files_dir', 'locale' => 'manager.files.publicFilesDir'), 'private' => array('config' => 'files_dir', 'locale' => 'manager.files.filesDir'));
 	/**
 	 * Constructor
 	 */
@@ -30,6 +36,11 @@ class FilesHandler extends ManagerHandler {
 	 */
 	function files($args, &$request) {
 		$this->validate();
+		
+		$location = '';
+		if (count($args)) {
+			$location = $this->_validateLocation($args);
+		}
 		$this->setupTemplate(true);
 
 		import('lib.pkp.classes.file.FileManager');
@@ -39,9 +50,15 @@ class FilesHandler extends ManagerHandler {
 		$templateMgr->assign('pageHierarchy', array(array($request->url(null, 'manager'), 'manager.journalManagement')));
 
 		$this->_parseDirArg($args, $currentDir, $parentDir);
-		$currentPath = $this->_getRealFilesDir($request, $currentDir);
+		if ($location) {
+			$currentPath = $this->_getRealFilesDir($location, $request, $currentDir);
+		} else {
+			$currentDir = '';
+			$parentDir = '';
+			$currentPath = NULL;
+		}
 
-		if (@is_file($currentPath)) {
+		if ($location && @is_file($currentPath)) {
 			if ($request->getUserVar('download')) {
 				$fileManager->downloadFile($currentPath);
 			} else {
@@ -50,7 +67,18 @@ class FilesHandler extends ManagerHandler {
 
 		} else {
 			$files = array();
-			if ($dh = @opendir($currentPath)) {
+			if (!$location) {
+				foreach ($this->locationOptions as $k => $v) {
+					$info = array(
+						'name' => $k,
+						'isDir' => true,
+						'mimetype' => AppLocale::Translate($v['locale']),
+						'mtime' => filemtime($this->_getRealFilesDir($k, $request, '')),
+						'size' => '',
+					);
+					$files[$k] = $info;
+				}
+			} elseif ($dh = @opendir($currentPath)) {
 				while (($file = readdir($dh)) !== false) {
 					if ($file != '.' && $file != '..') {
 						$filePath = $currentPath . '/'. $file;
@@ -62,6 +90,11 @@ class FilesHandler extends ManagerHandler {
 							'mtime' => filemtime($filePath),
 							'size' => $isDir ? '' : $fileManager->getNiceFileSize(filesize($filePath)),
 						);
+						if ($location == 'public' && !$isDir) {
+							$dir = $this->_getRealFilesSubdir($request, $currentDir);
+							$dir .= substr($dir, -1) == '/' ? '' : '/';
+							$info['permalink'] = $request->getBasePath().'/public'.$dir.$file;
+						}
 						$files[$file] = $info;
 					}
 				}
@@ -69,8 +102,8 @@ class FilesHandler extends ManagerHandler {
 			}
 			ksort($files);
 			$templateMgr->assign_by_ref('files', $files);
-			$templateMgr->assign('currentDir', $currentDir);
-			$templateMgr->assign('parentDir', $parentDir);
+			$templateMgr->assign('currentDir', ($location ? $location.($currentDir ? '/' : '') : '').$currentDir);
+			$templateMgr->assign('parentDir', ($parentDir ? $location.'/'.$parentDir : ($currentDir ? $location : '')));
 			$templateMgr->assign('helpTopicId','journal.managementPages.fileBrowser');
 			$templateMgr->display('manager/files/index.tpl');
 		}
@@ -83,9 +116,10 @@ class FilesHandler extends ManagerHandler {
 	 */
 	function fileUpload($args, &$request) {
 		$this->validate();
+		$location = $this->_validateLocation($args);
 
 		$this->_parseDirArg($args, $currentDir, $parentDir);
-		$currentPath = $this->_getRealFilesDir($request, $currentDir);
+		$currentPath = $this->_getRealFilesDir($location, $request, $currentDir);
 
 		import('lib.pkp.classes.file.FileManager');
 		$fileManager = new FileManager();
@@ -94,7 +128,7 @@ class FilesHandler extends ManagerHandler {
 			@$fileManager->uploadFile('file', $destPath);
 		}
 
-		$request->redirect(null, null, 'files', explode('/', $currentDir));
+		$request->redirect(null, null, 'files', explode('/', $location.'/'.$currentDir));
 	}
 
 	/**
@@ -104,11 +138,12 @@ class FilesHandler extends ManagerHandler {
 	 */
 	function fileMakeDir($args, &$request) {
 		$this->validate();
+		$location = $this->_validateLocation($args);
 
 		$this->_parseDirArg($args, $currentDir, $parentDir);
 
 		if ($dirName = $request->getUserVar('dirName')) {
-			$currentPath = $this->_getRealFilesDir($request, $currentDir);
+			$currentPath = $this->_getRealFilesDir($location, $request, $currentDir);
 			$newDir = $currentPath . '/' . $this->_cleanFileName($dirName);
 
 			import('lib.pkp.classes.file.FileManager');
@@ -116,7 +151,7 @@ class FilesHandler extends ManagerHandler {
 			@$fileManager->mkdir($newDir);
 		}
 
-		$request->redirect(null, null, 'files', explode('/', $currentDir));
+		$request->redirect(null, null, 'files', explode('/', $location.'/'.$currentDir));
 	}
 
 	/**
@@ -126,9 +161,10 @@ class FilesHandler extends ManagerHandler {
 	 */
 	function fileDelete($args, &$request) {
 		$this->validate();
+		$location = $this->_validateLocation($args);
 
 		$this->_parseDirArg($args, $currentDir, $parentDir);
-		$currentPath = $this->_getRealFilesDir($request, $currentDir);
+		$currentPath = $this->_getRealFilesDir($location, $request, $currentDir);
 
 		import('lib.pkp.classes.file.FileManager');
 		$fileManager = new FileManager();
@@ -140,7 +176,7 @@ class FilesHandler extends ManagerHandler {
 			@$fileManager->rmdir($currentPath);
 		}
 
-		$request->redirect(null, null, 'files', explode('/', $parentDir));
+		$request->redirect(null, null, 'files', explode('/', $location.'/'.$parentDir));
 	}
 
 
@@ -148,6 +184,19 @@ class FilesHandler extends ManagerHandler {
 	// Helper functions
 	// FIXME Move some of these functions into common class (FileManager?)
 	//
+	/**
+	 * Validates that a location exists in the locationOptions.
+	 * @param $args array
+	 * @return $location string
+	 * Side Effect: redirect to files root if location is invalid
+	 */
+	function _validateLocation(&$args) {
+		$location = array_shift($args);
+		if ($location && $this->locationOptions[$location]) {
+			return $location;
+		}
+		Request::redirect(null, null, 'files');
+	}
 
 	function _parseDirArg($args, &$currentDir, &$parentDir) {
 		$pathArray = array_filter($args, array($this, '_fileNameFilter'));
@@ -156,9 +205,13 @@ class FilesHandler extends ManagerHandler {
 		$parentDir = join($pathArray, '/');
 	}
 
-	function _getRealFilesDir($request, $currentDir) {
+	function _getRealFilesDir($location, $request, $currentDir) {
+		return Config::getVar('files', $this->locationOptions[$location]['config']) . $this->_getRealFilesSubdir($request, $currentDir);
+	}
+	
+	function _getRealFilesSubdir($request, $currentDir) {
 		$journal =& $request->getJournal();
-		return Config::getVar('files', 'files_dir') . '/journals/' . $journal->getId() .'/' . $currentDir;
+		return '/journals/' . $journal->getId() .'/' . $currentDir;
 	}
 
 	function _fileNameFilter($var) {
