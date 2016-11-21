@@ -15,4 +15,4 @@
 	url = git://github.com/ulsdevteam/COUNTER
 [submodule "plugins/importexport/EzidDOI"]
 	path = plugins/importexport/EzidDOI
-	url = https://github.com/VTUL/EzidDOI
+	url = https://github.com/ulsdevteam/EzidDOI
