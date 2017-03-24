@@ -19,3 +19,6 @@
 [submodule "plugins/generic/sushiLite"]
 	path = plugins/generic/sushiLite
 	url = https://github.com/ulsdevteam/ojs-sushiLite-plugin.git
+[submodule "plugins/importexport/EzidDOI"]
+	path = plugins/importexport/EzidDOI
+	url = https://github.com/ulsdevteam/EzidDOI
