@@ -287,6 +287,8 @@ allowed_html = "<a href|target> <em> <strong> <cite> <code> <ul> <ol> <li> <dl> 
 ; See pages/login/LoginHandler.inc.php for usage.
 ;implicit_auth_wayf_url = "/Shibboleth.sso/wayf"
 
+; If enabled, new users must be validated before login is possible.
+require_mediation = Off
 
 
 ;;;;;;;;;;;;;;;;;;

@@ -208,6 +208,7 @@ class RegistrationForm extends Form {
 	 */
 	function execute() {
 		$requireValidation = Config::getVar('email', 'require_validation');
+		$requireMediation = Config::getVar('security', 'require_mediation');
 
 		if ($this->existingUser) { // If using implicit auth - we hardwire that we are working on an existing user
 			// Existing user in the system
@@ -270,11 +271,16 @@ class RegistrationForm extends Form {
 			}
 			$user->setPassword(Validation::encryptCredentials($this->getData('username'), $this->getData('password')));
 
-			if ($requireValidation) {
-				// The account should be created in a disabled
-				// state.
-				$user->setDisabled(true);
-				$user->setDisabledReason(__('user.login.accountNotValidated'));
+			if ($requireValidation || $requireMediation) {
+				// The account should be created in a disabled state.
+				$disabled = 0;
+				if ($requireValidation) {
+					$disabled = $disabled | USER_DISABLED_EMAIL_VALIDATION;
+				}
+				if ($requireMediation) {
+					$disabled = $disabled | USER_DISABLED_MEDIATION;
+				}
+				$user->setDisabled($disabled);
 			}
 
 			parent::execute($user);

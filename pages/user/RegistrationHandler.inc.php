@@ -107,6 +107,16 @@ class RegistrationHandler extends UserHandler {
 					$templateMgr->assign('backLinkLabel', 'user.login');
 					return $templateMgr->display('common/error.tpl');
 				}
+				if (Config::getVar('security', 'require_mediation')) {
+					// Inform the user that they need to wait for account approval
+					$this->setupTemplate($request, true);
+					$templateMgr =& TemplateManager::getManager();
+					$templateMgr->assign('pageTitle', 'user.register.requireMediation');
+					$templateMgr->assign('errorMsg', 'user.register.requireMediationDescription');
+					$templateMgr->assign('backLink', $request->url(null, 'login'));
+					$templateMgr->assign('backLinkLabel', 'user.login');
+					return $templateMgr->display('common/error.tpl');
+				}
 			}
 
 			if ($reason !== null) {
@@ -168,8 +178,9 @@ class RegistrationHandler extends UserHandler {
 
 		if ($accessKey != null && $user->getDateValidated() === null) {
 			// Activate user
-			$user->setDisabled(false);
-			$user->setDisabledReason('');
+			$disabled = $user->getDisabled();
+			$disabled = $disabled & ~ USER_DISABLED_EMAIL_VALIDATION;
+			$user->setDisabled($disabled);
 			$user->setDateValidated(Core::getCurrentDate());
 			$userDao->updateObject($user);
 

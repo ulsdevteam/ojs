@@ -87,10 +87,17 @@ class Validation {
 			return $valid;
 
 		} else {
-			if ($user->getDisabled()) {
+			$disabled = $user->getDisabled();
+			if ($disabled) {
 				// The user has been disabled.
 				$reason = $user->getDisabledReason();
 				if ($reason === null) $reason = '';
+				if ($disabled & USER_DISABLED_EMAIL_VALIDATION) {
+					$reason .= ($reason ? "\n\n" : '').__('user.login.accountNotValidated');
+				}
+				if ($disabled & USER_DISABLED_MEDIATION) {
+					$reason .= ($reason ? "\n\n" : '').__('user.login.accountNotApproved');
+				}
 				$valid = false;
 				return $valid;
 			}

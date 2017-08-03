@@ -60,6 +60,8 @@ class ManagerHandler extends Handler {
 		$session =& Request::getSession();
 		$session->unsetSessionVar('enrolmentReferrer');
 
+		$templateMgr->assign('mediatedUsers', Config::getVar('security', 'require_mediation'));
+
 		$templateMgr->assign('helpTopicId','journal.index');
 		$templateMgr->display('manager/index.tpl');
 	}

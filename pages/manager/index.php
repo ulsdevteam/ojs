@@ -33,6 +33,7 @@ switch ($op) {
 	//
 	case 'people':
 	case 'showNoRole':
+	case 'showPending':
 	case 'enrollSearch':
 	case 'enroll':
 	case 'unEnroll':

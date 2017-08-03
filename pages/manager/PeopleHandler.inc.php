@@ -250,6 +250,30 @@ class PeopleHandler extends ManagerHandler {
 	}
 
 	/**
+	 * Show users pending approval
+	 */
+	function showPending() {
+		$this->validate();
+
+		$userDao =& DAORegistry::getDAO('UserDAO');
+
+		$templateMgr =& TemplateManager::getManager();
+
+		parent::setupTemplate(true);
+
+		$rangeInfo = $this->getRangeInfo('users');
+
+		$users =& $userDao->getUsersPendingMediation($rangeInfo);
+
+		$templateMgr->assign('omitSearch', true);
+		$templateMgr->assign_by_ref('users', $users);
+		$templateMgr->assign_by_ref('thisUser', Request::getUser());
+		$templateMgr->assign('helpTopicId', 'journal.users.index');
+		$templateMgr->display('manager/people/searchUsers.tpl');
+	}
+
+
+	/**
 	 * Enroll a user in a role.
 	 */
 	function enroll($args) {
@@ -571,7 +595,7 @@ class PeopleHandler extends ManagerHandler {
 			$userDao =& DAORegistry::getDAO('UserDAO');
 			$user =& $userDao->getById($userId);
 			if ($user) {
-				$user->setDisabled(1);
+				$user->setDisabled(USER_DISABLED_MANUAL);
 				$user->setDisabledReason(Request::getUserVar('reason'));
 			}
 			$userDao->updateObject($user);
@@ -595,7 +619,7 @@ class PeopleHandler extends ManagerHandler {
 			$userDao =& DAORegistry::getDAO('UserDAO');
 			$user =& $userDao->getById($userId, true);
 			if ($user) {
-				$user->setDisabled(0);
+				$user->setDisabled(USER_DISABLED_NONE);
 			}
 			$userDao->updateObject($user);
 		}
