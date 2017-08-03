@@ -286,7 +286,8 @@ allowed_html = "a[href|target|title],em,strong,cite,code,ul,ol,li[class],dl,dt,d
 
 ;implicit_auth_wayf_url = "/Shibboleth.sso/wayf"
 
-
+; Require approval from journal manager before login
+require_mediation = Off
 
 ;;;;;;;;;;;;;;;;;;
 ; Email Settings ;
