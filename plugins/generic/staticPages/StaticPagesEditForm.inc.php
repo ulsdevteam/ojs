@@ -101,7 +101,7 @@ class StaticPagesEditForm extends Form {
 			tinyMCE.init({
 			mode : "textareas",
 			plugins : "safari,spellchecker,style,layer,table,save,advhr,jbimages,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,pagebreak,jbimages",
-			theme_advanced_buttons1_add : "fontsizeselect",
+			theme_advanced_buttons1_add : "fontsizeselect,separator,jbimages",
 			theme_advanced_buttons2_add : "separator,preview,separator,forecolor,backcolor",
 			theme_advanced_buttons2_add_before: "search,replace,separator",
 			theme_advanced_buttons3_add_before : "tablecontrols,separator",
