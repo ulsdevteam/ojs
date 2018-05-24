@@ -25,3 +25,12 @@
 [submodule "plugins/importexport/EzidDOI"]
 	path = plugins/importexport/EzidDOI
 	url = https://github.com/ulsdevteam/EzidDOI
+[submodule "plugins/generic/clamav"]
+	path = plugins/generic/clamav
+	url = https://github.com/ulsdevteam/pkp-clamav
+[submodule "plugins/generic/akismet"]
+	path = plugins/generic/akismet
+	url = https://github.com/ulsdevteam/pkp-akismet
+[submodule "plugins/generic/formHoneypot"]
+	path = plugins/generic/formHoneypot
+	url = https://github.com/ulsdevteam/pkp-formHoneypot
