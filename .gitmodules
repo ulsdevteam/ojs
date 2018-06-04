@@ -34,3 +34,6 @@
 [submodule "plugins/generic/clamav"]
 	path = plugins/generic/clamav
 	url = https://github.com/ulsdevteam/pkp-clamav
+[submodule "plugins/generic/recentUsers"]
+	path = plugins/generic/recentUsers
+	url = https://github.com/ulsdevteam/pkp-recentUsers
