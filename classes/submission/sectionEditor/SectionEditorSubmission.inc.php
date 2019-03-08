@@ -1130,6 +1130,9 @@ class SectionEditorSubmission extends Article {
 				// the most recent decision or author/editor correspondence, highlight.
 				$comment = $this->getMostRecentEditorDecisionComment();
 				$commentDate = $comment ? strtotime($comment->getDatePosted()) : 0;
+				// ULS local: Ignore comments in highlighting
+				// Comments can come from editors or authors and are unhelpful in determining the "next" communication
+				$commentDate = 0;
 				$authorFileRevisions = $this->getAuthorFileRevisions($this->getCurrentRound());
 				$authorFileDate = null;
 				if (is_array($authorFileRevisions) && !empty($authorFileRevisions)) {
