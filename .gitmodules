@@ -47,3 +47,42 @@
 [submodule "plugins/reports/counter/classes/COUNTER"]
 	path = plugins/reports/counter/classes/COUNTER
 	url = https://github.com/ulsdevteam/COUNTER.git
+[submodule "plugins/generic/akismet"]
+	path = plugins/generic/akismet
+	url = https://github.com/ulsdevteam/pkp-akismet.git
+[submodule "plugins/generic/sushiLite"]
+	path = plugins/generic/sushiLite
+	url = https://github.com/ulsdevteam/ojs-sushiLite-plugin.git
+[submodule "plugins/generic/formHoneypot"]
+	path = plugins/generic/formHoneypot
+	url = https://github.com/ulsdevteam/pkp-formHoneypot.git
+[submodule "plugins/generic/plumAnalytics"]
+	path = plugins/generic/plumAnalytics
+	url = https://github.com/ulsdevteam/ojs-plum-plugin.git
+[submodule "plugins/generic/betterPassword"]
+	path = plugins/generic/betterPassword
+	url = https://github.com/ulsdevteam/pkp-betterPassword.git
+[submodule "plugins/themes/defaultManuscript"]
+	path = plugins/themes/defaultManuscript
+	url = https://github.com/NateWr/defaultManuscript.git
+[submodule "plugins/themes/bootstrap3"]
+	path = plugins/themes/bootstrap3
+	url = https://github.com/NateWr/bootstrap3.git
+[submodule "plugins/themes/healthSciences"]
+	path = plugins/themes/healthSciences
+	url = https://github.com/pkp/healthSciences.git
+[submodule "plugins/themes/classic"]
+	path = plugins/themes/classic
+	url = https://github.com/pkp/classic.git
+[submodule "plugins/themes/immersion"]
+	path = plugins/themes/immersion
+	url = https://github.com/pkp/immersion.git
+[submodule "plugins/importexport/quickSubmit"]
+	path = plugins/importexport/quickSubmit
+	url = https://github.com/pkp/quickSubmit.git
+[submodule "plugins/generic/texture"]
+	path = plugins/generic/texture
+	url = https://github.com/pkp/texture.git
+[submodule "plugins/themes/oldGregg"]
+	path = plugins/themes/oldGregg
+	url = https://github.com/Vitaliy-1/oldGregg.git
