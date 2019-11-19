@@ -107,12 +107,13 @@ class CLITool extends CommandLineTool {
 	$handler->getApp()->run();
 	$result = ob_get_contents();
 	ob_end_clean();
+	$json = json_decode($result);
 
 	// import('lib.pkp.api.v1.submissions.PKPSubmissionHandler');
 	// $test = new PKPSubmissionHandler();
 	// eval(\Psy\sh());
 	echo "You specified the command $this->command\n";
-	echo "It returned:\n" . var_export($result, true);
+	echo "It returned:\n" . var_export($json, true);
     }
 
 }
