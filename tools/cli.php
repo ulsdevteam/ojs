@@ -42,11 +42,19 @@ class CLITool extends CommandLineTool {
      * Delete submission data and associated files
      */
     function execute() {
+	// OJS routing depends on PATH_INFO
+	$_SERVER['PATH_INFO'] = $this->command;
+	// Slim depends on REQUEST_URI
+	// but this is handled by https://github.com/asmecher/pkp-lib/commit/6bbcb58e8af061e4e4eee838afacd9cf4b751dc8
+	//$_SERVER['REQUEST_URI'] = $this->command;
 	$request = Application::get()->getRequest();
 
+	// Minimally need an interrelated router, dispatcher and request
 	import('lib.pkp.classes.core.APIRouter');
 	$router = new APIRouter();
 	$router->setApplication(Application::get());
+	$dispatcher = Application::get()->getDispatcher();
+	$request->setDispatcher($dispatcher);
 	$request->setRouter($router);
 	$request->_protocol = 'https';
 
@@ -60,7 +68,7 @@ class CLITool extends CommandLineTool {
 	$user = Services::get('user')->get($userId); // should get actual admin
 	Registry::set('user', $user);
 
-	// Seet up the session
+	// Set up the session
 	$session = SessionManager::getManager()->sessionDao->newDataObject();
 	$session->setId(1);
 	$session->setUserId($userId);
@@ -83,9 +91,8 @@ class CLITool extends CommandLineTool {
 
 	// Fake the request object
 	$method = 'GET';
-	$uri = \Slim\Http\Uri::createFromString('/publicknowledge/api/v1/contexts');
+	$uri = \Slim\Http\Uri::createFromString($this->command);
 	$handler->getApp()->add(function($request, $response, $next) use ($method, $uri) {
-
 	    $request = $request->withMethod($method);
 	    $request = $request->withUri($uri);
 	    // if there were to be a POST body
@@ -96,12 +103,16 @@ class CLITool extends CommandLineTool {
 	});
 
 	// Run the route
+	ob_start();
 	$handler->getApp()->run();
+	$result = ob_get_contents();
+	ob_end_clean();
 
 	// import('lib.pkp.api.v1.submissions.PKPSubmissionHandler');
 	// $test = new PKPSubmissionHandler();
 	// eval(\Psy\sh());
 	echo "You specified the command $this->command\n";
+	echo "It returned:\n" . var_export($result, true);
     }
 
 }
