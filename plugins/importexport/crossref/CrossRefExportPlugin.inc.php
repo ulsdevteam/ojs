@@ -319,7 +319,7 @@ class CrossRefExportPlugin extends DOIPubIdExportPlugin {
 			// and can not be accessed later, so we save the falure message in the DB
 			$xmlDoc = new DOMDocument();
 			$xmlDoc->loadXML($response);
-			// Get batch ID
+			// Get batch ID, if possible
 			$batchIdNode = $xmlDoc->getElementsByTagName('batch_id')->item(0);
 			// Get re message
 			$msg = $response;
@@ -355,7 +355,8 @@ class CrossRefExportPlugin extends DOIPubIdExportPlugin {
 		}
 		// Update the status
 		if ($status) {
-			$this->updateDepositStatus($context, $objects, $status, $batchIdNode->nodeValue, $msg);
+			$batchId = is_object($batchIdNode) ? $batchIdNode->nodeValue : '';
+			$this->updateDepositStatus($context, $objects, $status, $batchId, $msg);
 			$this->updateObject($objects);
 		}
 
