@@ -92,3 +92,9 @@
 [submodule "plugins/generic/addThis"]
 	path = plugins/generic/addThis
 	url = https://github.com/pkp/addThis.git
+[submodule "plugins/generic/editorialBio"]
+	path = plugins/generic/editorialBio
+	url = https://github.com/ulsdevteam/pkp-editorialBio.git
+[submodule "plugins/generic/sitesearch"]
+	path = plugins/generic/sitesearch
+	url = https://github.com/ulsdevteam/pkp-sitesearch.git
