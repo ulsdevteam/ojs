@@ -98,3 +98,60 @@
 [submodule "plugins/generic/sitesearch"]
 	path = plugins/generic/sitesearch
 	url = https://github.com/ulsdevteam/pkp-sitesearch.git
+[submodule "plugins/generic/hypothesis"]
+	path = plugins/generic/hypothesis
+	url = https://github.com/asmecher/hypothesis.git
+[submodule "plugins/generic/plagiarism"]
+	path = plugins/generic/plagiarism
+	url = https://github.com/asmecher/plagiarism.git
+[submodule "plugins/generic/coins"]
+	path = plugins/generic/coins
+	url = https://github.com/pkp/coins.git
+[submodule "plugins/generic/piwik"]
+	path = plugins/generic/piwik
+	url = https://github.com/pkp/piwik.git
+[submodule "plugins/importexport/copernicus"]
+	path = plugins/importexport/copernicus
+	url = https://github.com/a-vodka/ojs_copernicus_export_plugin.git
+[submodule "plugins/generic/subscriptionSSO"]
+	path = plugins/generic/subscriptionSSO
+	url = https://github.com/asmecher/subscriptionSSO.git
+[submodule "plugins/generic/funding"]
+	path = plugins/generic/funding
+	url = https://github.com/ajnyga/funding.git
+[submodule "plugins/generic/customHeader"]
+	path = plugins/generic/customHeader
+	url = https://github.com/asmecher/customHeader.git
+[submodule "plugins/generic/jatsTemplate"]
+	path = plugins/generic/jatsTemplate
+	url = https://github.com/pkp/jatsTemplate.git
+[submodule "plugins/generic/sword"]
+	path = plugins/generic/sword
+	url = https://github.com/pkp/sword.git
+[submodule "plugins/oaiMetadataFormats/oaiJats"]
+	path = plugins/oaiMetadataFormats/oaiJats
+	url = https://github.com/pkp/oaiJats.git
+[submodule "plugins/blocks/keywordCloud"]
+	path = plugins/blocks/keywordCloud
+	url = https://github.com/lepidus/ojs3-keywordcloud-plugin.git
+[submodule "plugins/generic/crossrefReferenceLinking"]
+	path = plugins/generic/crossrefReferenceLinking
+	url = https://github.com/pkp/crossrefReferenceLinking.git
+[submodule "plugins/generic/defaultTranslation"]
+	path = plugins/generic/defaultTranslation
+	url = https://github.com/pkp/defaultTranslation.git
+[submodule "plugins/generic/paperbuzz"]
+	path = plugins/generic/paperbuzz
+	url = https://github.com/pkp/paperbuzz.git
+[submodule "plugins/generic/authorRequirements"]
+	path = plugins/generic/authorRequirements
+	url = https://github.com/ewhanson/authorRequirements.git
+[submodule "plugins/generic/registrationNotification"]
+	path = plugins/generic/registrationNotification
+	url = https://github.com/pkp/registrationNotification.git
+[submodule "plugins/blocks/twitterBlock"]
+	path = plugins/blocks/twitterBlock
+	url = https://github.com/RBoelter/twitterBlock.git
+[submodule "plugins/blocks/announcementsBlock"]
+	path = plugins/blocks/announcementsBlock
+	url = https://github.com/RBoelter/announcementsBlock.git
