@@ -155,3 +155,6 @@
 [submodule "plugins/blocks/announcementsBlock"]
 	path = plugins/blocks/announcementsBlock
 	url = https://github.com/RBoelter/announcementsBlock.git
+[submodule "plugins/generic/clamav"]
+	path = plugins/generic/clamav
+	url = https://github.com/ulsdevteam/pkp-clamav.git
