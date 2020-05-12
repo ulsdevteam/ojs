@@ -158,3 +158,6 @@
 [submodule "plugins/generic/clamav"]
 	path = plugins/generic/clamav
 	url = https://github.com/ulsdevteam/pkp-clamav.git
+[submodule "plugins/generic/openAIRE"]
+	path = plugins/generic/openAIRE
+	url = https://github.com/ojsde/openAIRE.git
