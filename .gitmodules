@@ -161,3 +161,6 @@
 [submodule "plugins/generic/openAIRE"]
 	path = plugins/generic/openAIRE
 	url = https://github.com/ojsde/openAIRE.git
+[submodule "plugins/generic/publons"]
+	path = plugins/generic/publons
+	url = https://github.com/ulsdevteam/ojs_3_plugin
