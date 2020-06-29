@@ -164,3 +164,6 @@
 [submodule "plugins/generic/publons"]
 	path = plugins/generic/publons
 	url = https://github.com/ulsdevteam/ojs_3_plugin
+[submodule "plugins/generic/emailIssueToc"]
+	path = plugins/generic/emailIssueToc
+	url = https://github.com/ulsdevteam/pkp-emailIssueToc.git
