@@ -167,3 +167,15 @@
 [submodule "plugins/generic/emailIssueToc"]
 	path = plugins/generic/emailIssueToc
 	url = https://github.com/ulsdevteam/pkp-emailIssueToc.git
+[submodule "plugins/generic/themeIssues"]
+	path = plugins/generic/themeIssues
+	url = https://github.com/ajnyga/themeIssues.git
+	branch = master
+[submodule "plugins/generic/customLocale"]
+	path = plugins/generic/customLocale
+	url = https://github.com/asmecher/customLocale.git
+	branch = stable-3_1_2
+[submodule "plugins/generic/browseBySection"]
+	path = plugins/generic/browseBySection
+	url = https://github.com/pkp/browseBySection.git
+	branch = stable-3_1_2
