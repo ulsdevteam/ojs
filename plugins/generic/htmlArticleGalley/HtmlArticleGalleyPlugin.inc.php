@@ -15,6 +15,9 @@
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 
+define('HTML_ARTICLE_GALLEY_DISPLAY_IFRAME', 0);
+define('HTML_ARTICLE_GALLEY_DISPLAY_INLINE', 1);
+
 class HtmlArticleGalleyPlugin extends GenericPlugin {
 	/**
 	 * @see Plugin::register()
@@ -64,12 +67,19 @@ class HtmlArticleGalleyPlugin extends GenericPlugin {
 
 		if ($galley && $galley->getFileType() == 'text/html') {
 			$templateMgr = TemplateManager::getManager($request);
+			$htmlArticleGalley = $this->_getHTMLContents($request, $galley);
 			$templateMgr->assign(array(
 				'issue' => $issue,
 				'article' => $article,
 				'galley' => $galley,
 			));
-			$templateMgr->display($this->getTemplateResource('display.tpl'));
+			$template = 'display.tpl';
+			if ($this->getSetting($request->getContext()->getId(), 'htmlArticleGalleyDisplayType') === HTML_ARTICLE_GALLEY_DISPLAY_INLINE) {
+				$templateMgr->assign('htmlArticleGalley', $htmlArticleGalley);
+				$htmlArticleGalley = $this->_extractBodyContents($htmlArticleGalley);
+				$template = 'displayInline.tpl';
+			}
+			$templateMgr->display($this->getTemplateResource($template));
 
 			return true;
 		}
@@ -98,6 +108,55 @@ class HtmlArticleGalleyPlugin extends GenericPlugin {
 		}
 
 		return false;
+	}
+
+	/**
+	 * @copydoc Plugin::getActions()
+	 */
+	function getActions($request, $verb) {
+		$router = $request->getRouter();
+		import('lib.pkp.classes.linkAction.request.AjaxModal');
+		return array_merge(
+			$this->getEnabled()?array(
+				new LinkAction(
+					'settings',
+					new AjaxModal(
+						$router->url($request, null, null, 'manage', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
+						$this->getDisplayName()
+					),
+					__('manager.plugins.settings'),
+					null
+				),
+			):array(),
+			parent::getActions($request, $verb)
+		);
+	}
+
+	/**
+	 * @copydoc Plugin::manage()
+	 */
+	function manage($args, $request) {
+		$verb = $request->getUserVar('verb');
+		switch ($verb) {
+			case 'settings':
+				$templateMgr = TemplateManager::getManager();
+				$templateMgr->register_function('plugin_url', array($this, 'smartyPluginUrl'));
+				$context = $request->getContext();
+
+				$this->import('HtmlArticleGalleySettingsForm');
+				$form = new HtmlArticleGalleySettingsForm($this, $context->getId());
+				if ($request->getUserVar('save')) {
+					$form->readInputData();
+					if ($form->validate()) {
+						$form->execute();
+						return new JSONMessage(true);
+					}
+				} else {
+					$form->initData();
+				}
+				return new JSONMessage(true, $form->fetch($request));
+		}
+		return parent::manage($args, $request);
 	}
 
 	/**
@@ -187,6 +246,33 @@ class HtmlArticleGalleyPlugin extends GenericPlugin {
 		return $contents;
 	}
 
+	/**
+	 * Return string containing the contents of the HTML body
+	 * @param $html string
+	 * @return string
+	 */
+	function _extractBodyContents($html) {
+		try {
+			$errorsEnabled = libxml_use_internal_errors();
+			libxml_use_internal_errors(true);
+			$dom = DOMDocument::loadHTML($html);
+			$tags = $dom->getElementsByTagName('body');
+			$bodyContent = '';
+			foreach ($tags as $body) {
+				foreach ($body->childNodes as $child) {
+					$bodyContent .= $dom->saveHTML($child);
+				}
+				last;
+			}
+			libxml_use_internal_errors($errorsEnabled);
+		} catch (Exception $e) {
+			$html = preg_replace('/.*<body[^>]*>/isA', '', $html);
+			$html = preg_replace('/<\/body\s*>.*$/isD', '', $html);
+			$bodyContent = $html;
+		}
+		return $bodyContent;
+	}
+	
 	function _handleOjsUrl($matchArray) {
 		$request = Application::getRequest();
 		$url = $matchArray[2];
