@@ -67,7 +67,6 @@ class HtmlArticleGalleyPlugin extends GenericPlugin {
 
 		if ($galley && $galley->getFileType() == 'text/html') {
 			$templateMgr = TemplateManager::getManager($request);
-			$htmlArticleGalley = $this->_getHTMLContents($request, $galley);
 			$templateMgr->assign(array(
 				'issue' => $issue,
 				'article' => $article,
@@ -75,8 +74,9 @@ class HtmlArticleGalleyPlugin extends GenericPlugin {
 			));
 			$template = 'display.tpl';
 			if ($this->getSetting($request->getContext()->getId(), 'htmlArticleGalleyDisplayType') === HTML_ARTICLE_GALLEY_DISPLAY_INLINE) {
-				$templateMgr->assign('htmlArticleGalley', $htmlArticleGalley);
+				$htmlArticleGalley = $this->_getHTMLContents($request, $galley);
 				$htmlArticleGalley = $this->_extractBodyContents($htmlArticleGalley);
+				$templateMgr->assign('htmlArticleGalley', $htmlArticleGalley);
 				$template = 'displayInline.tpl';
 			}
 			$templateMgr->display($this->getTemplateResource($template));
@@ -252,12 +252,12 @@ class HtmlArticleGalleyPlugin extends GenericPlugin {
 	 * @return string
 	 */
 	function _extractBodyContents($html) {
+		$bodyContent = '';
 		try {
 			$errorsEnabled = libxml_use_internal_errors();
 			libxml_use_internal_errors(true);
 			$dom = DOMDocument::loadHTML($html);
 			$tags = $dom->getElementsByTagName('body');
-			$bodyContent = '';
 			foreach ($tags as $body) {
 				foreach ($body->childNodes as $child) {
 					$bodyContent .= $dom->saveHTML($child);
