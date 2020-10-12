@@ -13,8 +13,8 @@
 <version>
 	<application>htmlArticleGalley</application>
 	<type>plugins.generic</type>
-	<release>1.0.0.0</release>
-	<date>2013-07-02</date>
+	<release>1.0.1.0</release>
+	<date>2020-10-12</date>
 	<lazy-load>1</lazy-load>
 	<class>HtmlArticleGalleyPlugin</class>
 </version>

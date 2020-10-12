@@ -14,4 +14,7 @@
 <locale name="en_US" full_name="U.S. English">
 	<message key="plugins.generic.htmlArticleGalley.displayName">HTML Article Galley</message>
 	<message key="plugins.generic.htmlArticleGalley.description">This plugin provides rendering support for HTML Article Galleys.</message>
+	<message key="plugins.generic.htmlArticleGalley.manager.settings.title">Customize the display of HTML Galleys.</message>
+	<message key="plugins.generic.htmlArticleGalley.manager.settings.description">A HTML Galley may be displayed directly in the site inline, or via an iframe.  The iframe will use a minimal header and footer and will maximize the presentation of the content.  Displaying the article inline will merge the body of the article with the body of the site.</message>
+	<message key="plugins.generic.htmlArticleGalley.manager.settings.htmlArticleGalleyDisplayType">Display the HTML Galley inline, rather than via an iframe.</message>
 </locale>
