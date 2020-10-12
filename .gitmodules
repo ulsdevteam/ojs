@@ -182,3 +182,9 @@
 [submodule "plugins/generic/announcementEmail"]
 	path = plugins/generic/announcementEmail
 	url = https://github.com/ajnyga/announcementEmail.git
+[submodule "plugins/importexport/archivematicaExport"]
+	path = plugins/importexport/archivematicaExport
+	url = https://github.com/escire/ArchivematicaExportPlugin.git
+[submodule "plugins/generic/pln"]
+	path = plugins/generic/pln
+	url = https://github.com/pkp/pln.git
