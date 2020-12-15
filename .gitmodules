@@ -50,3 +50,144 @@
 [submodule "plugins/generic/googleScholar"]
 	path = plugins/generic/googleScholar
 	url = https://github.com/pkp/googleScholar
+[submodule "plugins/generic/akismet"]
+	path = plugins/generic/akismet
+	url = https://github.com/ulsdevteam/pkp-akismet.git
+[submodule "plugins/generic/sushiLite"]
+	path = plugins/generic/sushiLite
+	url = https://github.com/ulsdevteam/ojs-sushiLite-plugin.git
+[submodule "plugins/generic/formHoneypot"]
+	path = plugins/generic/formHoneypot
+	url = https://github.com/ulsdevteam/pkp-formHoneypot.git
+[submodule "plugins/generic/plumAnalytics"]
+	path = plugins/generic/plumAnalytics
+	url = https://github.com/ulsdevteam/ojs-plum-plugin.git
+[submodule "plugins/generic/betterPassword"]
+	path = plugins/generic/betterPassword
+	url = https://github.com/ulsdevteam/pkp-betterPassword.git
+[submodule "plugins/themes/defaultManuscript"]
+	path = plugins/themes/defaultManuscript
+	url = https://github.com/NateWr/defaultManuscript.git
+[submodule "plugins/themes/bootstrap3"]
+	path = plugins/themes/bootstrap3
+	url = https://github.com/NateWr/bootstrap3.git
+[submodule "plugins/themes/healthSciences"]
+	path = plugins/themes/healthSciences
+	url = https://github.com/pkp/healthSciences.git
+[submodule "plugins/themes/classic"]
+	path = plugins/themes/classic
+	url = https://github.com/pkp/classic.git
+[submodule "plugins/themes/immersion"]
+	path = plugins/themes/immersion
+	url = https://github.com/pkp/immersion.git
+[submodule "plugins/importexport/quickSubmit"]
+	path = plugins/importexport/quickSubmit
+	url = https://github.com/pkp/quickSubmit.git
+[submodule "plugins/generic/texture"]
+	path = plugins/generic/texture
+	url = https://github.com/pkp/texture.git
+[submodule "plugins/themes/oldGregg"]
+	path = plugins/themes/oldGregg
+	url = https://github.com/Vitaliy-1/oldGregg.git
+[submodule "plugins/generic/lensGalleyBits"]
+	path = plugins/generic/lensGalleyBits
+	url = https://github.com/withanage/lensGalleyBits.git
+[submodule "plugins/generic/addThis"]
+	path = plugins/generic/addThis
+	url = https://github.com/pkp/addThis.git
+[submodule "plugins/generic/editorialBio"]
+	path = plugins/generic/editorialBio
+	url = https://github.com/ulsdevteam/pkp-editorialBio.git
+[submodule "plugins/generic/sitesearch"]
+	path = plugins/generic/sitesearch
+	url = https://github.com/ulsdevteam/pkp-sitesearch.git
+[submodule "plugins/generic/hypothesis"]
+	path = plugins/generic/hypothesis
+	url = https://github.com/asmecher/hypothesis.git
+[submodule "plugins/generic/plagiarism"]
+	path = plugins/generic/plagiarism
+	url = https://github.com/asmecher/plagiarism.git
+[submodule "plugins/generic/coins"]
+	path = plugins/generic/coins
+	url = https://github.com/pkp/coins.git
+[submodule "plugins/generic/piwik"]
+	path = plugins/generic/piwik
+	url = https://github.com/pkp/piwik.git
+[submodule "plugins/importexport/copernicus"]
+	path = plugins/importexport/copernicus
+	url = https://github.com/a-vodka/ojs_copernicus_export_plugin.git
+[submodule "plugins/generic/subscriptionSSO"]
+	path = plugins/generic/subscriptionSSO
+	url = https://github.com/asmecher/subscriptionSSO.git
+[submodule "plugins/generic/funding"]
+	path = plugins/generic/funding
+	url = https://github.com/ajnyga/funding.git
+[submodule "plugins/generic/customHeader"]
+	path = plugins/generic/customHeader
+	url = https://github.com/asmecher/customHeader.git
+[submodule "plugins/generic/jatsTemplate"]
+	path = plugins/generic/jatsTemplate
+	url = https://github.com/pkp/jatsTemplate.git
+[submodule "plugins/generic/sword"]
+	path = plugins/generic/sword
+	url = https://github.com/pkp/sword.git
+[submodule "plugins/oaiMetadataFormats/oaiJats"]
+	path = plugins/oaiMetadataFormats/oaiJats
+	url = https://github.com/pkp/oaiJats.git
+[submodule "plugins/blocks/keywordCloud"]
+	path = plugins/blocks/keywordCloud
+	url = https://github.com/lepidus/ojs3-keywordcloud-plugin.git
+[submodule "plugins/generic/crossrefReferenceLinking"]
+	path = plugins/generic/crossrefReferenceLinking
+	url = https://github.com/pkp/crossrefReferenceLinking.git
+[submodule "plugins/generic/defaultTranslation"]
+	path = plugins/generic/defaultTranslation
+	url = https://github.com/pkp/defaultTranslation.git
+[submodule "plugins/generic/paperbuzz"]
+	path = plugins/generic/paperbuzz
+	url = https://github.com/pkp/paperbuzz.git
+[submodule "plugins/generic/authorRequirements"]
+	path = plugins/generic/authorRequirements
+	url = https://github.com/ewhanson/authorRequirements.git
+[submodule "plugins/generic/registrationNotification"]
+	path = plugins/generic/registrationNotification
+	url = https://github.com/pkp/registrationNotification.git
+[submodule "plugins/blocks/twitterBlock"]
+	path = plugins/blocks/twitterBlock
+	url = https://github.com/RBoelter/twitterBlock.git
+[submodule "plugins/blocks/announcementsBlock"]
+	path = plugins/blocks/announcementsBlock
+	url = https://github.com/RBoelter/announcementsBlock.git
+[submodule "plugins/generic/clamav"]
+	path = plugins/generic/clamav
+	url = https://github.com/ulsdevteam/pkp-clamav.git
+[submodule "plugins/generic/openAIRE"]
+	path = plugins/generic/openAIRE
+	url = https://github.com/ojsde/openAIRE.git
+[submodule "plugins/generic/publons"]
+	path = plugins/generic/publons
+	url = https://github.com/ulsdevteam/ojs_3_plugin
+[submodule "plugins/generic/emailIssueToc"]
+	path = plugins/generic/emailIssueToc
+	url = https://github.com/ulsdevteam/pkp-emailIssueToc.git
+[submodule "plugins/generic/themeIssues"]
+	path = plugins/generic/themeIssues
+	url = https://github.com/ajnyga/themeIssues.git
+[submodule "plugins/generic/customLocale"]
+	path = plugins/generic/customLocale
+	url = https://github.com/asmecher/customLocale.git
+[submodule "plugins/generic/browseBySection"]
+	path = plugins/generic/browseBySection
+	url = https://github.com/pkp/browseBySection.git
+[submodule "plugins/generic/announcementEmail"]
+	path = plugins/generic/announcementEmail
+	url = https://github.com/ajnyga/announcementEmail.git
+[submodule "plugins/importexport/archivematicaExport"]
+	path = plugins/importexport/archivematicaExport
+	url = https://github.com/escire/ArchivematicaExportPlugin.git
+[submodule "plugins/generic/pln"]
+	path = plugins/generic/pln
+	url = https://github.com/pkp/pln.git
+[submodule "plugins/importexport/articleImporter"]
+	path = plugins/importexport/articleImporter
+	url = https://github.com/jonasraoni/article-importer-plugin.git
