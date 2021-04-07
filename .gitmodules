@@ -188,3 +188,12 @@
 [submodule "plugins/generic/pln"]
 	path = plugins/generic/pln
 	url = https://github.com/pkp/pln.git
+[submodule "plugins/generic/reviewerCredits"]
+	path = plugins/generic/reviewerCredits
+	url = https://gitlab.com/reviewercredits/reviewercredits-ojs-plugin.git
+[submodule "plugins/generic/citations"]
+	path = plugins/generic/citations
+	url = https://github.com/RBoelter/citations.git
+[submodule "plugins/importexport/portico"]
+	path = plugins/importexport/portico
+	url = https://github.com/pkp/portico.git
