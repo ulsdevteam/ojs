@@ -16,15 +16,11 @@
 GITREP=git://github.com/pkp/ojs.git
 
 if [ -z "$1" ]; then
-	echo "Usage: $0 <version> [<tag>-<branch>]";
+	echo "Usage: $0 <tarfile>";
 	exit 1;
 fi
 
-VERSION=$1
-TAG=$2
-PREFIX=ojs
-BUILD=$PREFIX-$VERSION
-TMPDIR=`mktemp -d $PREFIX.XXXXXX` || exit 1
+BUILD=$1
 
 EXCLUDE="docs/dev									\
 tests											\
@@ -92,29 +88,21 @@ vue.config.js										\
 lib/ui-library"
 
 
-cd $TMPDIR
-
-echo -n "Cloning $GITREP and checking out tag $TAG ... "
-git clone -b $TAG --depth 1 -q -n $GITREP $BUILD || exit 1
-cd $BUILD
-git checkout -q $TAG || exit 1
-echo "Done"
-
 echo -n "Checking out corresponding submodules ... "
 git submodule -q update --init --recursive >/dev/null || exit 1
 echo "Done"
 
 echo "Installing composer dependencies:"
 echo -n " - lib/pkp ... "
-composer.phar --working-dir=lib/pkp install --no-dev
+composer --working-dir=lib/pkp install --no-dev
 echo "Done"
 
 echo -n " - plugins/paymethod/paypal ... "
-composer.phar --working-dir=plugins/paymethod/paypal install --no-dev
+composer --working-dir=plugins/paymethod/paypal install --no-dev
 echo "Done"
 
 echo -n " - plugins/generic/citationStyleLanguage ... "
-composer.phar --working-dir=plugins/generic/citationStyleLanguage install --no-dev
+composer --working-dir=plugins/generic/citationStyleLanguage install --no-dev
 echo "Done"
 
 echo -n "Installing node dependencies... "
@@ -126,17 +114,14 @@ npm run build
 echo "Done"
 
 echo -n "Preparing package ... "
-cp config.TEMPLATE.inc.php config.inc.php
 find . \( -name .gitignore -o -name .gitmodules -o -name .keepme \) -exec rm '{}' \;
 rm -rf $EXCLUDE
 echo "Done"
 
-cd ..
+echo "chown directories ... "
+sudo chown -R root:ulssysdev ./
+sudo chown -R apache:apache public/ cache/
 
-echo -n "Creating archive $BUILD.tar.gz ... "
-tar -zhcf ../$BUILD.tar.gz $BUILD
+echo -n "Creating archive $BUILD ... "
+tar -zhcf $BUILD ./
 echo "Done"
-
-cd ..
-
-rm -r $TMPDIR
