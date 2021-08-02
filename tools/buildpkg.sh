@@ -118,6 +118,13 @@ find . \( -name .gitignore -o -name .gitmodules -o -name .keepme \) -exec rm '{}
 rm -rf $EXCLUDE
 echo "Done"
 
+echo -n "Local modifications ... "
+sed '154s/,$//' -i plugins/importexport/portico/PorticoExportPlugin.inc.php
+sed 's/"name": "Bolivia, Plurinational State of"/"name": "Plurinational State of Bolivia"/' -i lib/pkp/lib/vendor/sokil/php-isocodes/databases/iso_3166-1.json
+sed 's/"name": "Taiwan, Province of China"/"name": "Taiwan"/' -i lib/pkp/lib/vendor/sokil/php-isocodes/databases/iso_3166-1.json
+sed 's/"official_name": "Taiwan, Province of China"/"official_name": "Taiwan"/' -i lib/pkp/lib/vendor/sokil/php-isocodes/databases/iso_3166-1.json
+echo "Done"
+
 echo "chown directories ... "
 sudo chown -R root:ulssysdev ./
 sudo chown -R apache:apache public/ cache/
