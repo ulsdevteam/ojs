@@ -105,6 +105,10 @@ echo -n " - plugins/generic/citationStyleLanguage ... "
 composer --working-dir=plugins/generic/citationStyleLanguage install --no-dev
 echo "Done"
 
+echo -n " - and others ... "
+ls -1 plugins/*/*/composer.json | sed 's/composer.json//' | xargs -i composer --working-dir=\{\} install --no-dev
+echo "Done"
+
 echo -n "Installing node dependencies... "
 npm install
 echo "Done"
@@ -115,6 +119,7 @@ echo "Done"
 
 echo -n "Preparing package ... "
 find . \( -name .gitignore -o -name .gitmodules -o -name .keepme \) -exec rm '{}' \;
+find . \( -name .git \) -exec rm '{}' \;
 rm -rf $EXCLUDE
 echo "Done"
 
