@@ -206,3 +206,6 @@
 [submodule "plugins/generic/lucene"]
 	path = plugins/generic/lucene
 	url = https://github.com/ojsde/lucene.git
+[submodule "plugins/generic/inlineHtmlGalley"]
+	path = plugins/generic/inlineHtmlGalley
+	url = https://github.com/ulsdevteam/inlineHtmlGalley
