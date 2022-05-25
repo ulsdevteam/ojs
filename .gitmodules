@@ -212,3 +212,6 @@
 [submodule "plugins/generic/epubViewer"]
 	path = plugins/generic/epubViewer
 	url = https://github.com/lepidus/epubViewer
+[submodule "plugins/generic/inlineHtmlGalley"]
+	path = plugins/generic/inlineHtmlGalley
+	url = https://github.com/ulsdevteam/inlineHtmlGalley.git
