@@ -374,24 +374,14 @@ class ArticleHandler extends Handler {
 			$dispatcher->handle404();
 		}
 		$suppId = isset($args[1]) ? $args[1] : 0;
-		$submissionFilesIterator = Services::get('submissionFile')->getMany([
-			'submissionIds' => [$article->getId()],
-		]);
-		foreach ($submissionFilesIterator as $submissionFile) {
-			if ($submissionFile->getData('old-supp-id') == $suppId) {
-				$articleGalleyDao = DAORegistry::getDAO('ArticleGalleyDAO'); /* @var $articleGalleyDao ArticleGalleyDAO */
-				$articleGalleys = $articleGalleyDao->getByPublicationId($article->getCurrentPublication()->getId());
-				while ($articleGalley = $articleGalleys->next()) {
-					$galleyFile = $articleGalley->getFile();
-					if ($galleyFile && $galleyFile->getFileId() == $submissionFile->getId()) {
-						header('HTTP/1.1 301 Moved Permanently');
-						$request->redirect(null, null, 'download', array($articleId, $articleGalley->getId(), $submissionFile->getId()));
-					}
-				}
-			}
+		$submissionFile= DAORegistry::getDAO('SubmissionFileDAO')->getBySetting('old-supp-id', $suppId, $articleId);
+		if ($submissionFile !== NULL) {
+			header('HTTP/1.1 301 Moved Permanently');
+			$request->redirect(null, null, 'download', array($articleId, $submissionFile->getData('assocId')));
 		}
-		$dispatcher = $request->getDispatcher();
+		else {$dispatcher = $request->getDispatcher();
 		$dispatcher->handle404();
+		}
 	}
 
 	/**
