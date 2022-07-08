@@ -215,3 +215,12 @@
 [submodule "plugins/generic/inlineHtmlGalley"]
 	path = plugins/generic/inlineHtmlGalley
 	url = https://github.com/ulsdevteam/inlineHtmlGalley.git
+[submodule "plugins/generic/sushiLite"]
+	path = plugins/generic/sushiLite
+	url = https://github.com/ulsdevteam/ojs-sushiLite-plugin
+[submodule "plugins/generic/sitesearch"]
+	path = plugins/generic/sitesearch
+	url = https://github.com/ulsdevteam/pkp-sitesearch
+[submodule "plugins/generic/browseBySection"]
+	path = plugins/generic/browseBySection
+	url = https://github.com/pkp/browseBySection
