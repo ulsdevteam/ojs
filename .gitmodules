@@ -224,3 +224,12 @@
 [submodule "plugins/generic/browseBySection"]
 	path = plugins/generic/browseBySection
 	url = https://github.com/pkp/browseBySection
+[submodule "plugins/generic/allowedUploads"]
+	path = plugins/generic/allowedUploads
+	url = https://github.com/ajnyga/allowedUploads
+[submodule "plugins/generic/plaudit"]
+	path = plugins/generic/plaudit
+	url = https://github.com/lepidus/plaudit
+[submodule "plugins/generic/toggleRequiredMetadata"]
+	path = plugins/generic/toggleRequiredMetadata
+	url = https://github.com/lepidus/toggleRequiredMetadata
