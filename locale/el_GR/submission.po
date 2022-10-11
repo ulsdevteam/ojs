@@ -56,9 +56,6 @@ msgstr "Το τυπογραφικό δοκίμιο εμφανίζεται στη
 msgid "grid.action.issueEntry"
 msgstr "Προβολή των μεταδεδομένων αυτής της υποβολής"
 
-msgid "submission.publication"
-msgstr "Δημοσίευση"
-
 msgid "submission.event.articleGalleyMadeAvailable"
 msgstr "Το τυπογραφικό δοκίμιο του άρθρου \"{$galleyFormatName}\" είναι διαθέσιμο."
 
@@ -189,7 +186,7 @@ msgid "publication.unscheduledIn"
 msgstr "Αυτό δεν έχει προγραμματιστεί για δημοσίευση σε κάποιο τεύχος."
 
 msgid "publication.scheduledIn"
-msgstr "Προγραμματισμένο για δημοσίευση στο  <a href=\"{$issueUrl}\>{$issueName}</a>."
+msgstr "Προγραμματισμένο για δημοσίευση στο  <a href=\"{$issueUrl}\">{$issueName}</a>."
 
 msgid "publication.publishedIn"
 msgstr "Δημοσιεύτηκε στο <a href=\"{$issueUrl}\">{$issueName}</a>."
