@@ -184,19 +184,19 @@ class ArticleCrossrefXmlFilter extends IssueCrossrefXmlFilter
         // abstract
         $abstracts = $publication->getData('abstract');
         $titles = $publication->getData('title');
-        $languages = array_merge(keys($abstracts), keys($titles));
+        $languages = array_unique(array_merge(array_keys($abstracts), array_keys($titles)));
         foreach($languages as $lang) {            
             $abstractNode = $doc->createElementNS($deployment->getJATSNamespace(), 'jats:abstract');
             $abstractNode->setAttributeNS('http://www.w3.org/XML/1998/namespace', 'lang', LocaleConversion::getIso1FromLocale($lang));
-            if ($abstract[$lang]) {
-                $abstractNode->appendChild($node = $doc->createElementNS($deployment->getJATSNamespace(), 'jats:p', htmlspecialchars(html_entity_decode(strip_tags($abstract[$lang]), ENT_COMPAT, 'UTF-8'), ENT_COMPAT, 'UTF-8')));
+            if ($titles[$lang]) {
+                $abstractNode->appendChild($node = $doc->createElementNS($deployment->getJATSNamespace(), 'jats:title', htmlspecialchars(html_entity_decode(strip_tags($titles[$lang]), ENT_COMPAT, 'UTF-8'), ENT_COMPAT, 'UTF-8')));
             }
-            if ($title[$lang]) {
-                $abstractNode->appendChild($node = $doc->createElementNS($deployment->getJATSNamespace(), 'jats:title', htmlspecialchars(html_entity_decode(strip_tags($title[$lang]), ENT_COMPAT, 'UTF-8'), ENT_COMPAT, 'UTF-8')));
+            if ($abstracts[$lang]) {
+                $abstractNode->appendChild($node = $doc->createElementNS($deployment->getJATSNamespace(), 'jats:p', htmlspecialchars(html_entity_decode(strip_tags($abstracts[$lang]), ENT_COMPAT, 'UTF-8'), ENT_COMPAT, 'UTF-8')));
             }
             $journalArticleNode->appendChild($abstractNode);
         }
-`
+
 
         // publication date
         if ($datePublished = $publication->getData('datePublished')) {
