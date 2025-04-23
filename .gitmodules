@@ -194,9 +194,6 @@
 [submodule "plugins/generic/openGraph"]
 	path = plugins/generic/openGraph
 	url = https://github.com/ajnyga/openGraph
-[submodule "plugins/generic/publons"]
-	path = plugins/generic/publons
-	url = https://github.com/publons/ojs_3_plugin
 [submodule "plugins/generic/webOfScience"]
 	path = plugins/generic/webOfScience
 	url = https://github.com/clarivate/wos_reviewer_recognition_plugin_ojs_old
