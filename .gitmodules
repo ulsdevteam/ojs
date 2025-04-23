@@ -50,3 +50,222 @@
 [submodule "plugins/generic/googleScholar"]
 	path = plugins/generic/googleScholar
 	url = https://github.com/pkp/googleScholar
+[submodule "plugins/generic/rqc"]
+	path = plugins/generic/rqc
+	url = https://github.com/prechelt/ojs-rqcplugin
+[submodule "plugins/generic/hypothesis"]
+	path = plugins/generic/hypothesis
+	url = https://github.com/asmecher/hypothesis
+[submodule "plugins/generic/shibboleth"]
+	path = plugins/generic/shibboleth
+	url = https://github.com/pkp/shibboleth
+[submodule "plugins/generic/backup"]
+	path = plugins/generic/backup
+	url = https://github.com/asmecher/backup
+[submodule "plugins/generic/plagiarism"]
+	path = plugins/generic/plagiarism
+	url = https://github.com/pkp/plagiarism
+[submodule "plugins/generic/coins"]
+	path = plugins/generic/coins
+	url = https://github.com/pkp/coins
+[submodule "plugins/importexport/quickSubmit"]
+	path = plugins/importexport/quickSubmit
+	url = https://github.com/pkp/quickSubmit
+[submodule "plugins/generic/allowedUploads"]
+	path = plugins/generic/allowedUploads
+	url = https://github.com/ajnyga/allowedUploads
+[submodule "plugins/generic/authorsHistory"]
+	path = plugins/generic/authorsHistory
+	url = https://github.com/lepidus/authorsHistory
+[submodule "plugins/generic/pluginUpdateNotification"]
+	path = plugins/generic/pluginUpdateNotification
+	url = https://github.com/lepidus/pluginUpdateNotification
+[submodule "plugins/generic/piwik"]
+	path = plugins/generic/piwik
+	url = https://github.com/pkp/piwik
+[submodule "plugins/generic/shariff"]
+	path = plugins/generic/shariff
+	url = https://github.com/ojsde/shariff
+[submodule "plugins/generic/subscriptionSSO"]
+	path = plugins/generic/subscriptionSSO
+	url = https://github.com/asmecher/subscriptionSSO
+[submodule "plugins/generic/funding"]
+	path = plugins/generic/funding
+	url = https://github.com/ajnyga/funding
+[submodule "plugins/generic/customHeader"]
+	path = plugins/generic/customHeader
+	url = https://github.com/pkp/customHeader
+[submodule "plugins/generic/customLocale"]
+	path = plugins/generic/customLocale
+	url = https://github.com/pkp/customLocale
+[submodule "plugins/generic/jatsTemplate"]
+	path = plugins/generic/jatsTemplate
+	url = https://github.com/pkp/jatsTemplate
+[submodule "plugins/generic/sword"]
+	path = plugins/generic/sword
+	url = https://github.com/pkp/sword
+[submodule "plugins/oaiMetadataFormats/oaiJats"]
+	path = plugins/oaiMetadataFormats/oaiJats
+	url = https://github.com/pkp/oaiJats
+[submodule "plugins/blocks/keywordCloud"]
+	path = plugins/blocks/keywordCloud
+	url = https://github.com/lepidus/keywordCloud
+[submodule "plugins/themes/bootstrap3"]
+	path = plugins/themes/bootstrap3
+	url = https://github.com/pkp/bootstrap3
+[submodule "plugins/themes/classic"]
+	path = plugins/themes/classic
+	url = https://github.com/pkp/classic
+[submodule "plugins/themes/healthSciences"]
+	path = plugins/themes/healthSciences
+	url = https://github.com/pkp/healthSciences
+[submodule "plugins/themes/defaultManuscript"]
+	path = plugins/themes/defaultManuscript
+	url = https://github.com/pkp/defaultManuscript
+[submodule "plugins/themes/material"]
+	path = plugins/themes/material
+	url = https://github.com/madi-nuralin/material
+[submodule "plugins/generic/texture"]
+	path = plugins/generic/texture
+	url = https://github.com/pkp/texture
+[submodule "plugins/generic/crossrefReferenceLinking"]
+	path = plugins/generic/crossrefReferenceLinking
+	url = https://github.com/pkp/crossrefReferenceLinking
+[submodule "plugins/themes/immersion"]
+	path = plugins/themes/immersion
+	url = https://github.com/pkp/immersion
+[submodule "plugins/generic/defaultTranslation"]
+	path = plugins/generic/defaultTranslation
+	url = https://github.com/pkp/defaultTranslation
+[submodule "plugins/generic/openAIRE"]
+	path = plugins/generic/openAIRE
+	url = https://github.com/ojsde/openAIRE
+[submodule "plugins/generic/lensGalleyBits"]
+	path = plugins/generic/lensGalleyBits
+	url = https://github.com/withanage/lensGalleyBits
+[submodule "plugins/generic/adminNotificationManager"]
+	path = plugins/generic/adminNotificationManager
+	url = https://github.com/ulsdevteam/pkp-adminNotificationManager
+[submodule "plugins/generic/emailIssueToc"]
+	path = plugins/generic/emailIssueToc
+	url = https://github.com/ulsdevteam/pkp-emailIssueToc
+[submodule "plugins/generic/editorialBio"]
+	path = plugins/generic/editorialBio
+	url = https://github.com/ulsdevteam/pkp-editorialBio
+[submodule "plugins/generic/clamav"]
+	path = plugins/generic/clamav
+	url = https://github.com/ulsdevteam/pkp-clamav
+[submodule "plugins/generic/plumAnalytics"]
+	path = plugins/generic/plumAnalytics
+	url = https://github.com/ulsdevteam/ojs-plum-plugin
+[submodule "plugins/generic/sushiLite"]
+	path = plugins/generic/sushiLite
+	url = https://github.com/ulsdevteam/ojs-sushiLite-plugin
+[submodule "plugins/generic/betterPassword"]
+	path = plugins/generic/betterPassword
+	url = https://github.com/ulsdevteam/pkp-betterPassword
+[submodule "plugins/generic/sitesearch"]
+	path = plugins/generic/sitesearch
+	url = https://github.com/ulsdevteam/pkp-sitesearch
+[submodule "plugins/generic/akismet"]
+	path = plugins/generic/akismet
+	url = https://github.com/ulsdevteam/pkp-akismet
+[submodule "plugins/generic/formHoneypot"]
+	path = plugins/generic/formHoneypot
+	url = https://github.com/ulsdevteam/pkp-formHoneypot
+[submodule "plugins/generic/authorRequirements"]
+	path = plugins/generic/authorRequirements
+	url = https://github.com/pkp/authorRequirements
+[submodule "plugins/generic/controlPublicFiles"]
+	path = plugins/generic/controlPublicFiles
+	url = https://github.com/pkp/controlPublicFiles
+[submodule "plugins/generic/textEditorExtras"]
+	path = plugins/generic/textEditorExtras
+	url = https://github.com/pkp/textEditorExtras
+[submodule "plugins/blocks/twitterBlock"]
+	path = plugins/blocks/twitterBlock
+	url = https://github.com/RBoelter/twitterBlock
+[submodule "plugins/blocks/announcementsBlock"]
+	path = plugins/blocks/announcementsBlock
+	url = https://github.com/RBoelter/announcementsBlock
+[submodule "plugins/gateways/pubIdResolver"]
+	path = plugins/gateways/pubIdResolver
+	url = https://github.com/yasielpv/pubIdResolver
+[submodule "plugins/generic/openGraph"]
+	path = plugins/generic/openGraph
+	url = https://github.com/ajnyga/openGraph
+[submodule "plugins/generic/publons"]
+	path = plugins/generic/publons
+	url = https://github.com/publons/ojs_3_plugin
+[submodule "plugins/generic/webOfScience"]
+	path = plugins/generic/webOfScience
+	url = https://github.com/clarivate/wos_reviewer_recognition_plugin_ojs_old
+[submodule "plugins/themes/pragma"]
+	path = plugins/themes/pragma
+	url = https://github.com/pkp/pragma
+[submodule "plugins/generic/pln"]
+	path = plugins/generic/pln
+	url = https://github.com/pkp/pln
+[submodule "plugins/generic/citations"]
+	path = plugins/generic/citations
+	url = https://github.com/RBoelter/citations
+[submodule "plugins/importexport/portico"]
+	path = plugins/importexport/portico
+	url = https://github.com/pkp/portico
+[submodule "plugins/generic/ror"]
+	path = plugins/generic/ror
+	url = https://github.com/withanage/ror
+[submodule "plugins/importexport/medra"]
+	path = plugins/importexport/medra
+	url = https://github.com/pkp/medra
+[submodule "plugins/pubIds/ark"]
+	path = plugins/pubIds/ark
+	url = https://github.com/yasielpv/pkp-ark-pubid
+[submodule "plugins/generic/openid"]
+	path = plugins/generic/openid
+	url = https://github.com/pkp/openid
+[submodule "plugins/generic/browseBySection"]
+	path = plugins/generic/browseBySection
+	url = https://github.com/pkp/browseBySection
+[submodule "plugins/reports/scieloSubmissionsReport"]
+	path = plugins/reports/scieloSubmissionsReport
+	url = https://github.com/lepidus/scieloSubmissionsReport
+[submodule "plugins/generic/epubViewer"]
+	path = plugins/generic/epubViewer
+	url = https://github.com/lepidus/epubViewer
+[submodule "plugins/generic/inlineHtmlGalley"]
+	path = plugins/generic/inlineHtmlGalley
+	url = https://github.com/ulsdevteam/inlineHtmlGalley
+[submodule "plugins/generic/plaudit"]
+	path = plugins/generic/plaudit
+	url = https://github.com/lepidus/plaudit
+[submodule "plugins/generic/toggleRequiredMetadata"]
+	path = plugins/generic/toggleRequiredMetadata
+	url = https://github.com/lepidus/toggleRequiredMetadata
+[submodule "plugins/generic/doiInSummary"]
+	path = plugins/generic/doiInSummary
+	url = https://github.com/lepidus/doiInSummary
+[submodule "plugins/themes/gopher"]
+	path = plugins/themes/gopher
+	url = https://github.com/UMNLibraries/ojs-gopher-theme
+[submodule "plugins/themes/academicFree"]
+	path = plugins/themes/academicFree
+	url = https://github.com/openjournalteam/academicFree
+[submodule "plugins/generic/conference"]
+	path = plugins/generic/conference
+	url = https://github.com/withanage/conference
+[submodule "plugins/generic/journalEditorRestriction"]
+	path = plugins/generic/journalEditorRestriction
+	url = https://github.com/openjournalteam/journalEditorRestriction
+[submodule "plugins/generic/doiForTranslation"]
+	path = plugins/generic/doiForTranslation
+	url = https://github.com/lepidus/DoiForTranslation
+[submodule "plugins/generic/OASwitchboard"]
+	path = plugins/generic/OASwitchboard
+	url = https://github.com/lepidus/OASwitchboard
+[submodule "plugins/generic/deleteIncompleteSubmissions"]
+	path = plugins/generic/deleteIncompleteSubmissions
+	url = https://github.com/lepidus/deleteIncompleteSubmissions
+[submodule "plugins/generic/carinianaPreservation"]
+	path = plugins/generic/carinianaPreservation
+	url = https://github.com/lepidus/carinianaPreservation
