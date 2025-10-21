@@ -278,3 +278,6 @@
 [submodule "plugins/generic/pflPlugin"]
 	path = plugins/generic/pflPlugin
 	url = https://github.com/pkp/pflPlugin
+[submodule "plugins/generic/fullTextSearch"]
+	path = plugins/generic/fullTextSearch
+	url = git@github.com:jonasraoni/fullTextSearch.git
